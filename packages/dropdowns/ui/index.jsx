@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import "./index.css";
 
-export function Dropdown({ label = "Menu", items = [], onSelect, align = "left" }) {
+export function Dropdown({
+  label = "Menu",
+  items = [],
+  onSelect,
+  align = "left",
+}) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
