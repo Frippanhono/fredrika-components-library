@@ -1,0 +1,38 @@
+.fc-card {
+  background: #fff;
+  border: 1px solid var(--border, #eaeaea);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.fc-card__header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border, #eaeaea);
+  background: #fafafa;
+}
+
+.fc-card__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.fc-card__body {
+  padding: 1.25rem;
+  color: #374151;
+  flex: 1;
+}
+
+.fc-card__footer {
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid var(--border, #eaeaea);
+  background: #fafafa;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
