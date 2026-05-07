@@ -1,0 +1,80 @@
+.fc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.05s ease;
+  font-family: inherit;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.fc-btn:focus-visible {
+  outline: 2px solid var(--primary, #0070f3);
+  outline-offset: 2px;
+}
+
+.fc-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.fc-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.fc-btn--sm {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+}
+.fc-btn--md {
+  padding: 0.6rem 1.1rem;
+  font-size: 1rem;
+}
+.fc-btn--lg {
+  padding: 0.85rem 1.5rem;
+  font-size: 1.1rem;
+}
+
+/* Variants */
+.fc-btn--primary {
+  background: var(--primary, #0070f3);
+  color: #fff;
+}
+.fc-btn--primary:hover:not(:disabled) {
+  background: #0058c4;
+}
+
+.fc-btn--secondary {
+  background: #f3f4f6;
+  color: #111827;
+  border-color: var(--border, #eaeaea);
+}
+.fc-btn--secondary:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.fc-btn--danger {
+  background: #dc2626;
+  color: #fff;
+}
+.fc-btn--danger:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.fc-btn--ghost {
+  background: transparent;
+  color: var(--primary, #0070f3);
+}
+.fc-btn--ghost:hover:not(:disabled) {
+  background: rgba(0, 112, 243, 0.08);
+}
