@@ -53,3 +53,13 @@ Returnerar ett objekt med följande metoder:
 | `duration` | `number`                                           | `3500`   | Millisekunder innan toasten stängs. Sätt `0` för manuell stängning. |
 
 > `useToast()` måste anropas inuti `<ToastProvider>` – annars kastas ett fel.
+
+## Feedback
+
+Vi förbättrar `Toast`-systemet löpande baserat på input från användare och team.
+
+- 💬 [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,toasts&title=%5BFeedback%5D+toasts%3A+)
+- 🐞 [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,toasts&title=%5BBug%5D+toasts%3A+)
+- ✨ [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,toasts&title=%5BFeature%5D+toasts%3A+)
+
+Se alla pågående diskussioner under labeln [`toasts`](../../issues?q=is%3Aissue+label%3Atoasts).

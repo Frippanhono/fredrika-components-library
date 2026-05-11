@@ -29,3 +29,13 @@ import { Tabs } from "@fredrika/tabs";
 ## Tillgänglighet
 
 Komponenten använder `role="tablist"`, `role="tab"`, `role="tabpanel"` och `aria-selected`.
+
+## Feedback
+
+Vi förbättrar `Tabs` löpande baserat på input från användare och team.
+
+- 💬 [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,tabs&title=%5BFeedback%5D+tabs%3A+)
+- 🐞 [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,tabs&title=%5BBug%5D+tabs%3A+)
+- ✨ [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,tabs&title=%5BFeature%5D+tabs%3A+)
+
+Se alla pågående diskussioner under labeln [`tabs`](../../issues?q=is%3Aissue+label%3Atabs).

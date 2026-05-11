@@ -32,3 +32,26 @@ Varje paket har en egen README med detaljerad API-dokumentation och exempel. Var
 - **CSS-klasser** använder prefixet `fc-` (Fredrika Components) och BEM-liknande modifierare, t.ex. `fc-btn--primary`.
 - **Props**: `className` kompletterar (skriver inte över) interna klasser. Övriga props vidarebefordras till det underliggande DOM-elementet där det är meningsfullt.
 - **Tillgänglighet**: ARIA-attribut sätts automatiskt i komponenter som `Modal`, `Dropdown`, `Tabs` och `Input`.
+
+## Feedback och vidareutveckling
+
+Komponenterna utvecklas iterativt utifrån feedback från användare och teammedlemmar. Insikter om vad som fungerar och vad som kan förbättras är avgörande för bibliotekets kvalitet.
+
+### Lämna feedback
+
+Välj rätt mall så att rätt komponent får rätt label automatiskt:
+
+- 💬 **Komponentfeedback** – generella intryck, smärtor eller idéer. [Skapa](.github/ISSUE_TEMPLATE/component_feedback.yml)
+- 🐞 **Bugg** – något fungerar inte som dokumenterat. [Skapa](.github/ISSUE_TEMPLATE/bug_report.yml)
+- ✨ **Funktionsönskemål** – nya props, varianter eller komponenter. [Skapa](.github/ISSUE_TEMPLATE/feature_request.yml)
+
+Varje pakets README har också direktlänkar förfyllda med rätt komponent-label.
+
+### Så hanteras feedback
+
+1. Nya issues triageras veckovis och får labels (`bug`, `enhancement`, `feedback`) samt komponent-label (`buttons`, `modals`, …).
+2. Återkommande teman sammanställs som underlag för nästa iteration av komponenten.
+3. Breaking changes diskuteras öppet i issuen innan de planeras in.
+4. När en förändring landar länkas den tillbaka i issuen så att den som gav feedback ser resultatet.
+
+> Tips: Skärmdumpar, kodsnuttar och konkreta användningsfall gör feedback betydligt mer användbar.

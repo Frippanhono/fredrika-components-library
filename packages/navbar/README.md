@@ -35,3 +35,13 @@ import { Button } from "@fredrika/buttons";
 
 - På små skärmar kollapsas länkarna bakom en hamburgerknapp.
 - Vid klick på en länk stängs den mobila menyn automatiskt.
+
+## Feedback
+
+Vi förbättrar `Navbar` löpande baserat på input från användare och team.
+
+- 💬 [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,navbar&title=%5BFeedback%5D+navbar%3A+)
+- 🐞 [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,navbar&title=%5BBug%5D+navbar%3A+)
+- ✨ [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,navbar&title=%5BFeature%5D+navbar%3A+)
+
+Se alla pågående diskussioner under labeln [`navbar`](../../issues?q=is%3Aissue+label%3Anavbar).

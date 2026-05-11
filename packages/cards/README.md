@@ -32,3 +32,13 @@ import { Button } from "@fredrika/buttons";
 | `CardFooter` | Nedre sektion, ofta knappar eller metadata.              |
 
 Alla komponenter tar `children` och `className` och vidarebefordrar övriga props till det underliggande elementet.
+
+## Feedback
+
+Vi förbättrar `Card`-familjen löpande baserat på input från användare och team.
+
+- 💬 [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,cards&title=%5BFeedback%5D+cards%3A+)
+- 🐞 [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,cards&title=%5BBug%5D+cards%3A+)
+- ✨ [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,cards&title=%5BFeature%5D+cards%3A+)
+
+Se alla pågående diskussioner under labeln [`cards`](../../issues?q=is%3Aissue+label%3Acards).
