@@ -1,6 +1,8 @@
 .fc-navbar {
   width: 100%;
-  background: var(--fc-color-surface);
+  background: var(--fc-color-surface-translucent, rgba(255, 255, 255, 0.8));
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--fc-color-border);
   position: sticky;
   top: 0;
@@ -21,6 +23,7 @@
   font-size: var(--fc-font-size-lg);
   color: var(--fc-color-text);
   white-space: nowrap;
+  letter-spacing: -0.015em;
 }
 
 .fc-navbar__links {
@@ -34,12 +37,12 @@
 
 .fc-navbar__link {
   display: inline-block;
-  padding: var(--fc-space-2) 0.85rem;
+  padding: var(--fc-space-2) 0.9rem;
   border-radius: var(--fc-radius-md);
   color: var(--fc-color-text-soft);
   text-decoration: none;
   font-weight: var(--fc-font-weight-medium);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   transition:
     background-color var(--fc-transition-fast),
     color var(--fc-transition-fast);
@@ -51,6 +54,10 @@
 .fc-navbar__link.is-active {
   color: var(--fc-color-primary);
   background: var(--fc-color-primary-soft);
+}
+.fc-navbar__link:focus-visible {
+  outline: none;
+  box-shadow: var(--fc-shadow-focus);
 }
 
 .fc-navbar__actions {

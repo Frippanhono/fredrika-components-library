@@ -1,45 +1,61 @@
 .fc-field {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.4rem;
   text-align: left;
   width: 100%;
 }
 
 .fc-field__label {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: var(--fc-font-weight-medium);
   color: var(--fc-color-text-muted);
+  letter-spacing: -0.005em;
 }
 
 .fc-field__input {
   font: inherit;
-  padding: 0.6rem var(--fc-space-3);
+  padding: 0.65rem var(--fc-space-3);
   border-radius: var(--fc-radius-md);
   border: 1px solid var(--fc-color-border);
   background: var(--fc-color-surface);
   color: var(--fc-color-text);
   outline: none;
+  box-shadow: var(--fc-shadow-xs);
   transition:
     border-color var(--fc-transition-fast),
-    box-shadow var(--fc-transition-fast);
+    box-shadow var(--fc-transition-fast),
+    background-color var(--fc-transition-fast);
   width: 100%;
   box-sizing: border-box;
 }
+.fc-field__input::placeholder {
+  color: var(--fc-color-text-subtle);
+}
+.fc-field__input:hover:not(:focus):not(:disabled) {
+  border-color: var(--fc-color-border-strong);
+}
 .fc-field__input:focus {
   border-color: var(--fc-color-primary);
-  box-shadow: 0 0 0 3px var(--fc-color-primary-ring);
+  box-shadow: var(--fc-shadow-focus);
+}
+.fc-field__input:disabled {
+  background: var(--fc-color-surface-alt);
+  color: var(--fc-color-text-subtle);
+  cursor: not-allowed;
 }
 .fc-field__input--textarea {
   resize: vertical;
+  min-height: 96px;
   font-family: inherit;
+  line-height: 1.5;
 }
 
 .fc-field.has-error .fc-field__input {
   border-color: var(--fc-color-danger);
 }
 .fc-field.has-error .fc-field__input:focus {
-  box-shadow: 0 0 0 3px var(--fc-color-danger-ring);
+  box-shadow: 0 0 0 4px var(--fc-color-danger-ring);
 }
 
 .fc-field__hint {
@@ -50,4 +66,5 @@
 .fc-field__error {
   font-size: 0.8rem;
   color: var(--fc-color-danger);
+  font-weight: var(--fc-font-weight-medium);
 }
