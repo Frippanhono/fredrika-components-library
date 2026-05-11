@@ -1,0 +1,48 @@
+name: "✨ Funktionsönskemål"
+description: Föreslå en ny funktion eller förbättring i en komponent.
+title: "[Feature] <komponent>: <kort beskrivning>"
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Komponent
+      options:
+        - badges
+        - buttons
+        - cards
+        - dropdowns
+        - inputs
+        - modals
+        - navbar
+        - tabs
+        - toasts
+        - nytt paket
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem som löses
+      description: Vilket konkret behov eller smärta adresserar förslaget?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Förslag på lösning
+      description: API-skiss, props, exempel eller mockup.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativ som övervägts
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Omfattning
+      options:
+        - label: Bryter befintligt API (breaking change)
+        - label: Påverkar tillgänglighet (a11y)
+        - label: Påverkar design tokens / stil

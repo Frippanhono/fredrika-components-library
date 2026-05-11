@@ -46,3 +46,13 @@ Samma props som `Input` förutom `type`, plus:
 
 - `label` kopplas till fältet via `htmlFor`/`id`.
 - `aria-invalid` och `aria-describedby` sätts automatiskt baserat på `error`/`hint`.
+
+## Feedback
+
+Vi förbättrar `Input` och `Textarea` löpande baserat på input från användare och team.
+
+- 💬 [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,inputs&title=%5BFeedback%5D+inputs%3A+)
+- 🐞 [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,inputs&title=%5BBug%5D+inputs%3A+)
+- ✨ [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,inputs&title=%5BFeature%5D+inputs%3A+)
+
+Se alla pågående diskussioner under labeln [`inputs`](../../issues?q=is%3Aissue+label%3Ainputs).

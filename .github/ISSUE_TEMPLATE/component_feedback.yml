@@ -1,0 +1,60 @@
+name: "💬 Komponentfeedback"
+description: Generell feedback från användare eller teammedlemmar om en komponent.
+title: "[Feedback] <komponent>: <kort sammanfattning>"
+labels: ["feedback", "needs-triage"]
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Komponent
+      options:
+        - badges
+        - buttons
+        - cards
+        - dropdowns
+        - inputs
+        - modals
+        - navbar
+        - tabs
+        - toasts
+    validations:
+      required: true
+  - type: dropdown
+    id: role
+    attributes:
+      label: Din roll
+      options:
+        - Slutanvändare
+        - Designer
+        - Utvecklare
+        - Produktägare
+        - Annat
+    validations:
+      required: true
+  - type: textarea
+    id: works
+    attributes:
+      label: Vad fungerar bra?
+    validations:
+      required: false
+  - type: textarea
+    id: improve
+    attributes:
+      label: Vad kan förbättras?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Sammanhang / användningsfall
+      description: Var och hur används komponenten? Skärmdumpar är välkomna.
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Hur viktigt är detta för dig?
+      options:
+        - Trevligt att ha
+        - Skulle förbättra mitt arbete
+        - Blockerar mig idag
+    validations:
+      required: true

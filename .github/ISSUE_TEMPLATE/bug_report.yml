@@ -1,0 +1,57 @@
+name: "🐞 Buggrapport"
+description: Rapportera ett fel i en komponent.
+title: "[Bug] <komponent>: <kort beskrivning>"
+labels: ["bug", "needs-triage"]
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: Komponent
+      description: Vilken komponent gäller felet?
+      options:
+        - badges
+        - buttons
+        - cards
+        - dropdowns
+        - inputs
+        - modals
+        - navbar
+        - tabs
+        - toasts
+        - annat / flera
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Vad hände?
+      description: Beskriv felet kortfattat.
+      placeholder: När jag klickar på ... så ...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steg för att återskapa
+      placeholder: |
+        1. Gå till ...
+        2. Klicka på ...
+        3. Se felet ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Förväntat beteende
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Paketversion
+      placeholder: "@fredrika/buttons@0.0.0"
+  - type: input
+    id: env
+    attributes:
+      label: Miljö
+      placeholder: "Chrome 124 / Windows 11 / React 19"

@@ -44,3 +44,13 @@ const [open, setOpen] = useState(false);
 - Stänger vid klick på bakgrunden eller `Escape`.
 - Låser scrollning på `document.body` medan dialogen är öppen.
 - Sätter `role="dialog"` och `aria-modal="true"`.
+
+## Feedback
+
+Vi förbättrar `Modal` löpande baserat på input från användare och team.
+
+- 💬 [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,modals&title=%5BFeedback%5D+modals%3A+)
+- 🐞 [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,modals&title=%5BBug%5D+modals%3A+)
+- ✨ [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,modals&title=%5BFeature%5D+modals%3A+)
+
+Se alla pågående diskussioner under labeln [`modals`](../../issues?q=is%3Aissue+label%3Amodals).

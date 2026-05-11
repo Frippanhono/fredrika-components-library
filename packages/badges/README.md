@@ -21,3 +21,13 @@ import { Badge } from "@fredrika/badges";
 | `className` | `string`                                                  | `""`        | Extra CSS-klasser.                   |
 
 Övriga props vidarebefordras till det underliggande `<span>`-elementet.
+
+## Feedback
+
+Vi förbättrar `Badge` löpande baserat på input från användare och team.
+
+- 💬 [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,badges&title=%5BFeedback%5D+badges%3A+)
+- 🐞 [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,badges&title=%5BBug%5D+badges%3A+)
+- ✨ [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,badges&title=%5BFeature%5D+badges%3A+)
+
+Se alla pågående diskussioner under labeln [`badges`](../../issues?q=is%3Aissue+label%3Abadges).

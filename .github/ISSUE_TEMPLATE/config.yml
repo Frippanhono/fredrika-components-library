@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Fråga eller diskussion
+    url: https://github.com/discussions
+    about: Använd Discussions för frågor och idéer som inte är konkreta buggar eller önskemål.
