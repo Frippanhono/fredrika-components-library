@@ -30,7 +30,9 @@
 
 .fc-toast {
   pointer-events: auto;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-3);
   min-width: 240px;
   max-width: 360px;
   padding: var(--fc-space-3) var(--fc-space-4);
@@ -41,6 +43,34 @@
   box-shadow: var(--fc-shadow-toast);
   animation: fc-toast-in 0.2s ease;
   text-align: left;
+}
+
+.fc-toast__message {
+  flex: 1;
+}
+
+.fc-toast__close {
+  flex: none;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  padding: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--fc-radius-sm, 4px);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.fc-toast__close:hover {
+  opacity: 1;
+}
+
+.fc-toast__close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
 .fc-toast--info {
