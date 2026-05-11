@@ -86,17 +86,33 @@ export function ToastProvider({ children, position = "top-right" }) {
     <ToastContext.Provider value={api}>
       {children}
       {createPortal(
-        <div className={`fc-toast__container fc-toast__container--${position}`}>
-          {toasts.map((t) => (
-            <div
-              key={t.id}
-              role="status"
-              className={`fc-toast fc-toast--${t.variant}`}
-              onClick={() => remove(t.id)}
-            >
-              {t.message}
-            </div>
-          ))}
+        <div
+          className={`fc-toast__container fc-toast__container--${position}`}
+          role="region"
+          aria-label="Notifieringar"
+        >
+          {toasts.map((t) => {
+            const assertive = t.variant === "error" || t.variant === "warning";
+            return (
+              <div
+                key={t.id}
+                role={assertive ? "alert" : "status"}
+                aria-live={assertive ? "assertive" : "polite"}
+                aria-atomic="true"
+                className={`fc-toast fc-toast--${t.variant}`}
+              >
+                <div className="fc-toast__message">{t.message}</div>
+                <button
+                  type="button"
+                  className="fc-toast__close"
+                  aria-label="Stäng notifiering"
+                  onClick={() => remove(t.id)}
+                >
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+            );
+          })}
         </div>,
         document.body,
       )}
