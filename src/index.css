@@ -5,45 +5,48 @@
    ========================================================================= */
 :root {
   /* Brand & Primary */
-  --fc-color-primary: #0070f3;
-  --fc-color-primary-hover: #0058c4;
-  --fc-color-primary-soft: rgba(0, 112, 243, 0.08);
-  --fc-color-primary-ring: rgba(0, 112, 243, 0.15);
+  --fc-color-primary: #1f6f48;
+  --fc-color-primary-hover: #185a3a;
+  --fc-color-primary-active: #134a2f;
+  --fc-color-primary-soft: rgba(31, 111, 72, 0.1);
+  --fc-color-primary-ring: rgba(31, 111, 72, 0.22);
+  --fc-color-primary-gradient: linear-gradient(135deg, #2a8a5a 0%, #1f6f48 100%);
 
   /* Neutrals / Surfaces */
-  --fc-color-bg: #f9fafb;
+  --fc-color-bg: #f3e9d8;
   --fc-color-surface: #ffffff;
-  --fc-color-surface-alt: #fafafa;
-  --fc-color-surface-hover: #f3f4f6;
-  --fc-color-border: #eaeaea;
-  --fc-color-border-strong: #d1d5db;
-  --fc-color-overlay: rgba(17, 24, 39, 0.55);
+  --fc-color-surface-alt: #fbf6ec;
+  --fc-color-surface-hover: #f3e9d8;
+  --fc-color-surface-translucent: rgba(255, 255, 255, 0.82);
+  --fc-color-border: #ece2cf;
+  --fc-color-border-strong: #d8cbb1;
+  --fc-color-overlay: rgba(40, 30, 18, 0.5);
 
   /* Text */
-  --fc-color-text: #111827;
-  --fc-color-text-muted: #374151;
-  --fc-color-text-subtle: #6b7280;
-  --fc-color-text-soft: #4b5563;
+  --fc-color-text: #1a1a1a;
+  --fc-color-text-muted: #3d3a32;
+  --fc-color-text-subtle: #8a8170;
+  --fc-color-text-soft: #5e564a;
   --fc-color-text-inverse: #ffffff;
 
   /* Semantic palette (solid / background / foreground) */
-  --fc-color-info: #2563eb;
-  --fc-color-info-bg: #dbeafe;
-  --fc-color-info-fg: #1e40af;
+  --fc-color-info: #1f6f48;
+  --fc-color-info-bg: #e4efe7;
+  --fc-color-info-fg: #185a3a;
 
-  --fc-color-success: #16a34a;
-  --fc-color-success-bg: #dcfce7;
-  --fc-color-success-fg: #166534;
+  --fc-color-success: #1f6f48;
+  --fc-color-success-bg: #e4efe7;
+  --fc-color-success-fg: #185a3a;
 
-  --fc-color-warning: #d97706;
-  --fc-color-warning-bg: #fef3c7;
-  --fc-color-warning-fg: #92400e;
+  --fc-color-warning: #c97a1a;
+  --fc-color-warning-bg: #fbe9ce;
+  --fc-color-warning-fg: #8a4a0c;
 
-  --fc-color-danger: #dc2626;
-  --fc-color-danger-hover: #b91c1c;
-  --fc-color-danger-bg: #fee2e2;
-  --fc-color-danger-fg: #991b1b;
-  --fc-color-danger-ring: rgba(220, 38, 38, 0.18);
+  --fc-color-danger: #c44545;
+  --fc-color-danger-hover: #a83838;
+  --fc-color-danger-bg: #f6dede;
+  --fc-color-danger-fg: #8a2a2a;
+  --fc-color-danger-ring: rgba(196, 69, 69, 0.2);
 
   /* Typography */
   --fc-font-family:
@@ -66,23 +69,25 @@
   --fc-space-6: 1.5rem;
 
   /* Radius scale */
-  --fc-radius-sm: 6px;
-  --fc-radius-md: 8px;
-  --fc-radius-lg: 10px;
-  --fc-radius-xl: 12px;
-  --fc-radius-2xl: 14px;
+  --fc-radius-sm: 10px;
+  --fc-radius-md: 12px;
+  --fc-radius-lg: 16px;
+  --fc-radius-xl: 20px;
+  --fc-radius-2xl: 24px;
   --fc-radius-pill: 999px;
 
   /* Elevation */
-  --fc-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
-  --fc-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
-  --fc-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --fc-shadow-toast: 0 8px 24px rgba(0, 0, 0, 0.18);
-  --fc-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.25);
+  --fc-shadow-xs: 0 1px 2px rgba(60, 45, 20, 0.05);
+  --fc-shadow-sm: 0 2px 8px rgba(60, 45, 20, 0.06), 0 1px 2px rgba(60, 45, 20, 0.04);
+  --fc-shadow-md: 0 10px 30px rgba(60, 45, 20, 0.08), 0 2px 6px rgba(60, 45, 20, 0.04);
+  --fc-shadow-toast: 0 12px 32px rgba(40, 30, 18, 0.2), 0 2px 6px rgba(40, 30, 18, 0.08);
+  --fc-shadow-lg: 0 30px 80px rgba(40, 30, 18, 0.22), 0 8px 24px rgba(40, 30, 18, 0.12);
+  --fc-shadow-focus: 0 0 0 4px var(--fc-color-primary-ring);
 
   /* Motion */
-  --fc-transition-fast: 0.15s ease;
-  --fc-transition-press: 0.05s ease;
+  --fc-transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --fc-transition-press: 0.08s ease-out;
+  --fc-transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Focus */
   --fc-focus-ring-width: 2px;

@@ -33,16 +33,19 @@
   display: flex;
   align-items: center;
   gap: var(--fc-space-3);
-  min-width: 240px;
-  max-width: 360px;
-  padding: var(--fc-space-3) var(--fc-space-4);
+  min-width: 260px;
+  max-width: 380px;
+  padding: 0.85rem var(--fc-space-4);
   border-radius: var(--fc-radius-lg);
   color: var(--fc-color-text-inverse);
   font-weight: var(--fc-font-weight-medium);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   box-shadow: var(--fc-shadow-toast);
-  animation: fc-toast-in 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  animation: fc-toast-in 0.24s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: left;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .fc-toast__message {
@@ -89,10 +92,10 @@
 @keyframes fc-toast-in {
   from {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-8px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }

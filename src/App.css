@@ -18,14 +18,15 @@
 
 .app__hero {
   text-align: left;
-  padding: var(--fc-space-4) 0 var(--fc-space-2);
+  padding: var(--fc-space-6) 0 var(--fc-space-4);
   border-bottom: 1px solid var(--fc-color-border);
   padding-bottom: var(--fc-space-6);
 }
 .app__hero h1 {
   margin: 0 0 var(--fc-space-2);
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.3rem);
   letter-spacing: -0.02em;
+  font-weight: var(--fc-font-weight-bold);
   color: var(--fc-color-text);
 }
 .app__hero p {

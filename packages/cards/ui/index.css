@@ -1,18 +1,27 @@
 .fc-card {
   background: var(--fc-color-surface);
   border: 1px solid var(--fc-color-border);
-  border-radius: var(--fc-radius-xl);
+  border-radius: var(--fc-radius-2xl);
   box-shadow: var(--fc-shadow-sm);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   text-align: left;
+  transition:
+    transform var(--fc-transition-smooth),
+    box-shadow var(--fc-transition-smooth),
+    border-color var(--fc-transition-smooth);
+}
+
+.fc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--fc-shadow-md);
+  border-color: var(--fc-color-border-strong);
 }
 
 .fc-card__header {
-  padding: var(--fc-space-4) var(--fc-space-5);
-  border-bottom: 1px solid var(--fc-color-border);
-  background: var(--fc-color-surface-alt);
+  padding: var(--fc-space-5) var(--fc-space-5) var(--fc-space-3);
+  background: transparent;
 }
 
 .fc-card__title {
@@ -20,16 +29,18 @@
   font-size: 1.05rem;
   font-weight: var(--fc-font-weight-semibold);
   color: var(--fc-color-text);
+  letter-spacing: -0.01em;
 }
 
 .fc-card__body {
-  padding: var(--fc-space-5);
-  color: var(--fc-color-text-muted);
+  padding: 0 var(--fc-space-5) var(--fc-space-5);
+  color: var(--fc-color-text-soft);
   flex: 1;
+  line-height: 1.55;
 }
 
 .fc-card__footer {
-  padding: 0.85rem var(--fc-space-5);
+  padding: var(--fc-space-3) var(--fc-space-5);
   border-top: 1px solid var(--fc-color-border);
   background: var(--fc-color-surface-alt);
   display: flex;

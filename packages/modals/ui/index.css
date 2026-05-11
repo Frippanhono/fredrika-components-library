@@ -2,24 +2,27 @@
   position: fixed;
   inset: 0;
   background: var(--fc-color-overlay);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--fc-space-4);
   z-index: var(--fc-z-modal);
-  animation: fc-modal-fade var(--fc-transition-fast);
+  animation: fc-modal-fade 0.22s ease;
 }
 
 .fc-modal {
   background: var(--fc-color-surface);
-  border-radius: var(--fc-radius-xl);
+  border: 1px solid var(--fc-color-border);
+  border-radius: var(--fc-radius-2xl);
   box-shadow: var(--fc-shadow-lg);
   width: 100%;
   max-height: calc(100vh - 2rem);
   display: flex;
   flex-direction: column;
   text-align: left;
-  animation: fc-modal-pop 0.18s ease;
+  animation: fc-modal-pop 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fc-modal--sm {
   max-width: 380px;
@@ -35,8 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--fc-space-4) var(--fc-space-5);
-  border-bottom: 1px solid var(--fc-color-border);
+  padding: var(--fc-space-5) var(--fc-space-5) var(--fc-space-3);
 }
 
 .fc-modal__title {
@@ -44,31 +46,44 @@
   font-size: var(--fc-font-size-lg);
   font-weight: var(--fc-font-weight-semibold);
   color: var(--fc-color-text);
+  letter-spacing: -0.01em;
 }
 
 .fc-modal__close {
   background: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
   color: var(--fc-color-text-subtle);
-  padding: 0 var(--fc-space-1);
-  transition: color var(--fc-transition-fast);
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--fc-radius-sm);
+  transition:
+    background-color var(--fc-transition-fast),
+    color var(--fc-transition-fast);
 }
 .fc-modal__close:hover {
   color: var(--fc-color-text);
+  background: var(--fc-color-surface-hover);
+}
+.fc-modal__close:focus-visible {
+  outline: none;
+  box-shadow: var(--fc-shadow-focus);
 }
 
 .fc-modal__body {
-  padding: var(--fc-space-5);
+  padding: 0 var(--fc-space-5) var(--fc-space-5);
   overflow-y: auto;
-  color: var(--fc-color-text-muted);
+  color: var(--fc-color-text-soft);
+  line-height: 1.55;
 }
 
 .fc-modal__footer {
-  padding: 0.85rem var(--fc-space-5);
-  border-top: 1px solid var(--fc-color-border);
+  padding: var(--fc-space-3) var(--fc-space-5) var(--fc-space-5);
   display: flex;
   justify-content: flex-end;
   gap: var(--fc-space-2);
@@ -85,7 +100,7 @@
 @keyframes fc-modal-pop {
   from {
     opacity: 0;
-    transform: translateY(8px) scale(0.98);
+    transform: translateY(12px) scale(0.97);
   }
   to {
     opacity: 1;
