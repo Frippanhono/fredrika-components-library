@@ -8,27 +8,27 @@
 
 .fc-field__label {
   font-size: 0.9rem;
-  font-weight: 500;
-  color: #374151;
+  font-weight: var(--fc-font-weight-medium);
+  color: var(--fc-color-text-muted);
 }
 
 .fc-field__input {
   font: inherit;
-  padding: 0.6rem 0.75rem;
-  border-radius: 8px;
-  border: 1px solid var(--border, #eaeaea);
-  background: #fff;
-  color: #111827;
+  padding: 0.6rem var(--fc-space-3);
+  border-radius: var(--fc-radius-md);
+  border: 1px solid var(--fc-color-border);
+  background: var(--fc-color-surface);
+  color: var(--fc-color-text);
   outline: none;
   transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
+    border-color var(--fc-transition-fast),
+    box-shadow var(--fc-transition-fast);
   width: 100%;
   box-sizing: border-box;
 }
 .fc-field__input:focus {
-  border-color: var(--primary, #0070f3);
-  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.15);
+  border-color: var(--fc-color-primary);
+  box-shadow: 0 0 0 3px var(--fc-color-primary-ring);
 }
 .fc-field__input--textarea {
   resize: vertical;
@@ -36,18 +36,18 @@
 }
 
 .fc-field.has-error .fc-field__input {
-  border-color: #dc2626;
+  border-color: var(--fc-color-danger);
 }
 .fc-field.has-error .fc-field__input:focus {
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18);
+  box-shadow: 0 0 0 3px var(--fc-color-danger-ring);
 }
 
 .fc-field__hint {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: var(--fc-color-text-subtle);
 }
 
 .fc-field__error {
   font-size: 0.8rem;
-  color: #dc2626;
+  color: var(--fc-color-danger);
 }

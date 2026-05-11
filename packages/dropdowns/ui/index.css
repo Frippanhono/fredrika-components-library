@@ -7,22 +7,29 @@
 .fc-dropdown__trigger {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--border, #eaeaea);
-  background: #fff;
+  gap: var(--fc-space-2);
+  padding: 0.55rem var(--fc-space-4);
+  border-radius: var(--fc-radius-md);
+  border: 1px solid var(--fc-color-border);
+  background: var(--fc-color-surface);
   font: inherit;
-  font-weight: 500;
+  font-weight: var(--fc-font-weight-medium);
   cursor: pointer;
-  color: #111827;
+  color: var(--fc-color-text);
+  transition:
+    background-color var(--fc-transition-fast),
+    border-color var(--fc-transition-fast);
 }
 .fc-dropdown__trigger:hover {
-  background: #f9fafb;
+  background: var(--fc-color-bg);
+}
+.fc-dropdown__trigger:focus-visible {
+  outline: var(--fc-focus-ring-width) solid var(--fc-color-primary);
+  outline-offset: var(--fc-focus-ring-offset);
 }
 
 .fc-dropdown__caret {
-  transition: transform 0.15s ease;
+  transition: transform var(--fc-transition-fast);
   font-size: 0.75rem;
 }
 .fc-dropdown__caret.is-open {
@@ -36,11 +43,11 @@
   margin: 0;
   padding: 0.35rem;
   list-style: none;
-  background: #fff;
-  border: 1px solid var(--border, #eaeaea);
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  z-index: 50;
+  background: var(--fc-color-surface);
+  border: 1px solid var(--fc-color-border);
+  border-radius: var(--fc-radius-lg);
+  box-shadow: var(--fc-shadow-md);
+  z-index: var(--fc-z-dropdown);
 }
 .fc-dropdown__menu--left {
   left: 0;
@@ -53,16 +60,17 @@
   display: block;
   width: 100%;
   text-align: left;
-  padding: 0.5rem 0.75rem;
+  padding: var(--fc-space-2) var(--fc-space-3);
   border: none;
   background: transparent;
-  border-radius: 6px;
+  border-radius: var(--fc-radius-sm);
   font: inherit;
-  color: #1f2937;
+  color: var(--fc-color-text-muted);
   cursor: pointer;
+  transition: background-color var(--fc-transition-fast);
 }
 .fc-dropdown__item:hover:not(:disabled) {
-  background: #f3f4f6;
+  background: var(--fc-color-surface-hover);
 }
 .fc-dropdown__item:disabled {
   opacity: 0.5;

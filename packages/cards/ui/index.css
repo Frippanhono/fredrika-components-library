@@ -1,8 +1,8 @@
 .fc-card {
-  background: #fff;
-  border: 1px solid var(--border, #eaeaea);
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  background: var(--fc-color-surface);
+  border: 1px solid var(--fc-color-border);
+  border-radius: var(--fc-radius-xl);
+  box-shadow: var(--fc-shadow-sm);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -10,29 +10,29 @@
 }
 
 .fc-card__header {
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid var(--border, #eaeaea);
-  background: #fafafa;
+  padding: var(--fc-space-4) var(--fc-space-5);
+  border-bottom: 1px solid var(--fc-color-border);
+  background: var(--fc-color-surface-alt);
 }
 
 .fc-card__title {
   margin: 0;
   font-size: 1.05rem;
-  font-weight: 600;
-  color: #111827;
+  font-weight: var(--fc-font-weight-semibold);
+  color: var(--fc-color-text);
 }
 
 .fc-card__body {
-  padding: 1.25rem;
-  color: #374151;
+  padding: var(--fc-space-5);
+  color: var(--fc-color-text-muted);
   flex: 1;
 }
 
 .fc-card__footer {
-  padding: 0.85rem 1.25rem;
-  border-top: 1px solid var(--border, #eaeaea);
-  background: #fafafa;
+  padding: 0.85rem var(--fc-space-5);
+  border-top: 1px solid var(--fc-color-border);
+  background: var(--fc-color-surface-alt);
   display: flex;
-  gap: 0.5rem;
+  gap: var(--fc-space-2);
   justify-content: flex-end;
 }
