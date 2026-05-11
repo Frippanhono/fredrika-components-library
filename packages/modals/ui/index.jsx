@@ -2,6 +2,27 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import "./index.css";
 
+/**
+ * Modal – tillgänglig dialogruta som renderas via portal.
+ *
+ * Beteenden:
+ * - Stänger vid klick på bakgrunden eller `Escape`.
+ * - Låser scrollning på `document.body` medan dialogen är öppen.
+ * - Sätter `role="dialog"` och `aria-modal="true"`.
+ *
+ * @param {object} props
+ * @param {boolean} props.open - Styr om dialogen visas. När `false` renderas inget.
+ * @param {() => void} props.onClose - Anropas när användaren stänger dialogen.
+ * @param {React.ReactNode} [props.title] - Rubrik; visas i headern och används som aria-label.
+ * @param {React.ReactNode} props.children - Dialogens brödinnehåll.
+ * @param {React.ReactNode} [props.footer] - Innehåll i footern, t.ex. knappar.
+ * @param {"sm"|"md"|"lg"} [props.size="md"] - Bredd på dialogen.
+ *
+ * @example
+ * <Modal open={open} onClose={() => setOpen(false)} title="Bekräfta">
+ *   Är du säker?
+ * </Modal>
+ */
 export function Modal({ open, onClose, title, children, footer, size = "md" }) {
   useEffect(() => {
     if (!open) return;
