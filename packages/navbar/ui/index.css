@@ -1,31 +1,31 @@
 .fc-navbar {
   width: 100%;
-  background: #fff;
-  border-bottom: 1px solid var(--border, #eaeaea);
+  background: var(--fc-color-surface);
+  border-bottom: 1px solid var(--fc-color-border);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: var(--fc-z-navbar);
 }
 
 .fc-navbar__inner {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  padding: 0.75rem 1.25rem;
+  gap: var(--fc-space-6);
+  padding: var(--fc-space-3) var(--fc-space-5);
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .fc-navbar__brand {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #111827;
+  font-weight: var(--fc-font-weight-bold);
+  font-size: var(--fc-font-size-lg);
+  color: var(--fc-color-text);
   white-space: nowrap;
 }
 
 .fc-navbar__links {
   display: flex;
-  gap: 0.25rem;
+  gap: var(--fc-space-1);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -34,28 +34,28 @@
 
 .fc-navbar__link {
   display: inline-block;
-  padding: 0.5rem 0.85rem;
-  border-radius: 8px;
-  color: #4b5563;
+  padding: var(--fc-space-2) 0.85rem;
+  border-radius: var(--fc-radius-md);
+  color: var(--fc-color-text-soft);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: var(--fc-font-weight-medium);
   font-size: 0.95rem;
   transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
+    background-color var(--fc-transition-fast),
+    color var(--fc-transition-fast);
 }
 .fc-navbar__link:hover {
-  background: #f3f4f6;
-  color: #111827;
+  background: var(--fc-color-surface-hover);
+  color: var(--fc-color-text);
 }
 .fc-navbar__link.is-active {
-  color: var(--primary, #0070f3);
-  background: rgba(0, 112, 243, 0.08);
+  color: var(--fc-color-primary);
+  background: var(--fc-color-primary-soft);
 }
 
 .fc-navbar__actions {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--fc-space-2);
   align-items: center;
 }
 
@@ -73,7 +73,7 @@
 .fc-navbar__toggle span {
   display: block;
   height: 2px;
-  background: #111827;
+  background: var(--fc-color-text);
   border-radius: 2px;
 }
 
@@ -94,8 +94,8 @@
   }
   .fc-navbar__link {
     display: block;
-    padding: 0.65rem 0.5rem;
+    padding: 0.65rem var(--fc-space-2);
     border-radius: 0;
-    border-bottom: 1px solid var(--border, #eaeaea);
+    border-bottom: 1px solid var(--fc-color-border);
   }
 }
