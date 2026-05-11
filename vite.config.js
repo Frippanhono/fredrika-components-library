@@ -9,6 +9,9 @@ const pkg = (name) => resolve(__dirname, `packages/${name}`);
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  esbuild: {
+    jsx: "automatic",
+  },
   resolve: {
     alias: {
       "@fredrika/buttons": pkg("buttons"),
@@ -21,5 +24,12 @@ export default defineConfig({
       "@fredrika/inputs": pkg("inputs"),
       "@fredrika/badges": pkg("badges"),
     },
+  },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: ["./test/setup.js"],
+    css: true,
+    include: ["test/**/*.test.{js,jsx}"],
   },
 });
