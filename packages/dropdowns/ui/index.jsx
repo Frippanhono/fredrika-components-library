@@ -1,6 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import "./index.css";
 
+/**
+ * Dropdown – meny som öppnas vid klick och stängs vid klick utanför eller Escape.
+ *
+ * Tillgänglig: använder `aria-haspopup`, `aria-expanded` samt `role="menu"`/`menuitem`.
+ *
+ * @param {object} props
+ * @param {string} [props.label="Menu"] - Text på utlösarknappen.
+ * @param {Array<{label: React.ReactNode, value?: any, disabled?: boolean}>} [props.items=[]] - Menyalternativ.
+ * @param {(item: object) => void} [props.onSelect] - Anropas när ett alternativ väljs.
+ * @param {"left"|"right"} [props.align="left"] - Justering av menyn relativt utlösaren.
+ *
+ * @example
+ * <Dropdown
+ *   label="Välj"
+ *   items={[{ label: "Ett", value: 1 }, { label: "Två", value: 2 }]}
+ *   onSelect={(item) => console.log(item.value)}
+ * />
+ */
 export function Dropdown({
   label = "Menu",
   items = [],

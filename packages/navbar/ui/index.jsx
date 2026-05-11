@@ -1,6 +1,25 @@
 import { useState } from "react";
 import "./index.css";
 
+/**
+ * Navbar – responsiv toppnavigering med varumärke, länkar och åtgärder.
+ *
+ * På små skärmar kollapsas länkarna bakom en hamburgerknapp.
+ *
+ * @param {object} props
+ * @param {React.ReactNode} props.brand - Logotyp eller varumärkesnamn till vänster.
+ * @param {Array<{label: React.ReactNode, href?: string}>} [props.links=[]] - Navigeringslänkar.
+ * @param {React.ReactNode} [props.actions] - Åtgärder till höger (t.ex. inloggningsknapp).
+ * @param {string} [props.activeHref] - href som ska markeras som aktiv.
+ * @param {(link: object) => void} [props.onNavigate] - Om angiven används den i stället för default-länknavigering (förhindrar omladdning).
+ *
+ * @example
+ * <Navbar
+ *   brand="Fredrika"
+ *   links={[{ label: "Hem", href: "/" }, { label: "Om", href: "/about" }]}
+ *   activeHref="/"
+ * />
+ */
 export function Navbar({ brand, links = [], actions, activeHref, onNavigate }) {
   const [open, setOpen] = useState(false);
 
