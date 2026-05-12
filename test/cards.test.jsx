@@ -6,7 +6,7 @@ import {
   CardTitle,
   CardBody,
   CardFooter,
-} from "@fredrika/cards";
+} from "@minilogg/cards";
 
 describe("Card primitives", () => {
   it("renders structure with semantic title h3", () => {

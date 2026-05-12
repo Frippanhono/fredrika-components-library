@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { Badge } from "@fredrika/badges";
+import { Badge } from "@minilogg/badges";
 
 describe("Badge", () => {
   it("renders children with default classes", () => {

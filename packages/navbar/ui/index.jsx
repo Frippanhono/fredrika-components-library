@@ -19,7 +19,7 @@ import "./index.css";
  *
  * @example
  * <Navbar
- *   brand="Fredrika"
+ *   brand="MiniLogg"
  *   links={[{ label: "Hem", href: "/" }, { label: "Om", href: "/about" }]}
  *   activeHref="/"
  * />

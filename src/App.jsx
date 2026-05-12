@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { Button } from "@fredrika/buttons";
+import { Button } from "@minilogg/buttons";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardBody,
   CardFooter,
-} from "@fredrika/cards";
-import { Dropdown } from "@fredrika/dropdowns";
-import { Modal } from "@fredrika/modals";
-import { Tabs } from "@fredrika/tabs";
-import { ToastProvider, useToast } from "@fredrika/toasts";
-import { Navbar } from "@fredrika/navbar";
-import { Input, Textarea } from "@fredrika/inputs";
-import { Badge } from "@fredrika/badges";
+} from "@minilogg/cards";
+import { Dropdown } from "@minilogg/dropdowns";
+import { Modal } from "@minilogg/modals";
+import { Tabs } from "@minilogg/tabs";
+import { ToastProvider, useToast } from "@minilogg/toasts";
+import { Navbar } from "@minilogg/navbar";
+import { Input, Textarea } from "@minilogg/inputs";
+import { Badge } from "@minilogg/badges";
 import "./App.css";
 
 function Showcase() {
@@ -31,7 +31,7 @@ function Showcase() {
   return (
     <div className="app">
       <Navbar
-        brand="Fredrika UI"
+        brand="MiniLogg UI"
         links={navLinks}
         activeHref={section}
         onNavigate={(link) => setSection(link.href)}
@@ -48,7 +48,7 @@ function Showcase() {
 
       <main className="app__main">
         <header className="app__hero">
-          <h1>Fredrika Components Library</h1>
+          <h1>MiniLogg Components Library</h1>
           <p>
             En samling React-komponenter: <Badge variant="info">buttons</Badge>{" "}
             <Badge variant="info">cards</Badge>{" "}
@@ -162,7 +162,7 @@ function Showcase() {
           <div className="form-grid">
             <Input
               label="Name"
-              placeholder="Fredrika"
+              placeholder="MiniLogg"
               hint="Visas i din profil"
               value={name}
               onChange={(e) => setName(e.target.value)}
