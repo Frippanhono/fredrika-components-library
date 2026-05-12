@@ -1,4 +1,4 @@
-# @fredrika/toasts
+# @minilogg/toasts
 
 Tillfälliga notifieringar (toasts) som visas via en provider och nås med en hook.
 
@@ -7,7 +7,7 @@ Tillfälliga notifieringar (toasts) som visas via en provider och nås med en ho
 Wrappa applikationen i `ToastProvider` och anropa `useToast()` där du behöver visa meddelanden.
 
 ```jsx
-import { ToastProvider, useToast } from "@fredrika/toasts";
+import { ToastProvider, useToast } from "@minilogg/toasts";
 
 function Root() {
   return (

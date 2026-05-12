@@ -1,11 +1,11 @@
-# @fredrika/badges
+# @minilogg/badges
 
 Liten etikettkomponent för status, kategori eller räknare.
 
 ## Användning
 
 ```jsx
-import { Badge } from "@fredrika/badges";
+import { Badge } from "@minilogg/badges";
 
 <Badge variant="success">Aktiv</Badge>
 <Badge variant="warning" size="sm">3</Badge>

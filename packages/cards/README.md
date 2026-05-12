@@ -1,12 +1,12 @@
-# @fredrika/cards
+# @minilogg/cards
 
 Kortkomponenter för att gruppera relaterat innehåll.
 
 ## Användning
 
 ```jsx
-import { Card, CardHeader, CardTitle, CardBody, CardFooter } from "@fredrika/cards";
-import { Button } from "@fredrika/buttons";
+import { Card, CardHeader, CardTitle, CardBody, CardFooter } from "@minilogg/cards";
+import { Button } from "@minilogg/buttons";
 
 <Card>
   <CardHeader>

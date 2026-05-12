@@ -1,11 +1,11 @@
-# @fredrika/inputs
+# @minilogg/inputs
 
 Formulärfält med inbyggd etikett, hjälptext och felhantering.
 
 ## Användning
 
 ```jsx
-import { Input, Textarea } from "@fredrika/inputs";
+import { Input, Textarea } from "@minilogg/inputs";
 
 <Input
   label="E-post"

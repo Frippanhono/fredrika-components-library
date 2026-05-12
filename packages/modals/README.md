@@ -1,4 +1,4 @@
-# @fredrika/modals
+# @minilogg/modals
 
 Tillgänglig dialogruta som renderas via portal till `document.body`.
 
@@ -6,8 +6,8 @@ Tillgänglig dialogruta som renderas via portal till `document.body`.
 
 ```jsx
 import { useState } from "react";
-import { Modal } from "@fredrika/modals";
-import { Button } from "@fredrika/buttons";
+import { Modal } from "@minilogg/modals";
+import { Button } from "@minilogg/buttons";
 
 const [open, setOpen] = useState(false);
 

@@ -1,15 +1,15 @@
-# @fredrika/navbar
+# @minilogg/navbar
 
 Responsiv toppnavigering med varumärke, länkar och åtgärder.
 
 ## Användning
 
 ```jsx
-import { Navbar } from "@fredrika/navbar";
-import { Button } from "@fredrika/buttons";
+import { Navbar } from "@minilogg/navbar";
+import { Button } from "@minilogg/buttons";
 
 <Navbar
-  brand="Fredrika"
+  brand="MiniLogg"
   activeHref="/"
   links={[
     { label: "Hem", href: "/" },

@@ -1,11 +1,11 @@
-# @fredrika/buttons
+# @minilogg/buttons
 
 Standardknapp med varianter och storlekar.
 
 ## Användning
 
 ```jsx
-import { Button } from "@fredrika/buttons";
+import { Button } from "@minilogg/buttons";
 
 <Button variant="primary" onClick={handleSave}>Spara</Button>
 <Button variant="danger" disabled>Ta bort</Button>

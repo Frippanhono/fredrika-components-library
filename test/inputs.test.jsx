@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Input, Textarea } from "@fredrika/inputs";
+import { Input, Textarea } from "@minilogg/inputs";
 
 describe("Input", () => {
   it("links label to input via generated id", () => {

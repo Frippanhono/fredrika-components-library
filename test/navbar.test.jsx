@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Navbar } from "@fredrika/navbar";
+import { Navbar } from "@minilogg/navbar";
 
 const links = [
   { label: "Home", href: "/" },

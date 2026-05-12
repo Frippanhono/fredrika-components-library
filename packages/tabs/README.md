@@ -1,11 +1,11 @@
-# @fredrika/tabs
+# @minilogg/tabs
 
 Flikkomponent som växlar mellan paneler.
 
 ## Användning
 
 ```jsx
-import { Tabs } from "@fredrika/tabs";
+import { Tabs } from "@minilogg/tabs";
 
 <Tabs
   defaultIndex={0}

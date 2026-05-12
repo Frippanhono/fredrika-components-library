@@ -1,11 +1,11 @@
-# @fredrika/dropdowns
+# @minilogg/dropdowns
 
 Tillgänglig meny som öppnas vid klick.
 
 ## Användning
 
 ```jsx
-import { Dropdown } from "@fredrika/dropdowns";
+import { Dropdown } from "@minilogg/dropdowns";
 
 <Dropdown
   label="Välj språk"
