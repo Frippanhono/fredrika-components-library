@@ -10,7 +10,7 @@ import "./index.css";
  * - Tangentbord i tablisten: ←/→, Home, End för att byta flik.
  *
  * @param {object} props
- * @param {Array<{label: React.ReactNode, content: React.ReactNode}>} [props.tabs=[]] - Flikar att visa.
+ * @param {Array<{label: React.ReactNode, content: React.ReactNode, icon?: React.ReactNode}>} [props.tabs=[]] - Flikar att visa.
  * @param {number} [props.defaultIndex=0] - Index på flik som visas initialt.
  * @param {(index: number) => void} [props.onChange] - Anropas när användaren byter flik.
  *
@@ -79,7 +79,12 @@ export function Tabs({ tabs = [], defaultIndex = 0, onChange }) {
               className={`fc-tabs__tab ${selected ? "is-active" : ""}`}
               onClick={() => select(i)}
             >
-              {tab.label}
+              {tab.icon != null && (
+                <span className="fc-tabs__icon" aria-hidden="true">
+                  {tab.icon}
+                </span>
+              )}
+              <span className="fc-tabs__label">{tab.label}</span>
             </button>
           );
         })}

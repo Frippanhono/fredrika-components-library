@@ -5,56 +5,86 @@
 
 .fc-tabs__list {
   display: flex;
-  gap: var(--fc-space-1);
-  border-bottom: 1px solid var(--fc-color-border);
+  flex-wrap: wrap;
+  gap: var(--fc-space-2);
+  padding: var(--fc-space-2);
+  background: var(--fc-color-surface-hover, #f3f0fa);
+  border-radius: 999px;
 }
 
 .fc-tabs__tab {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-2);
   background: transparent;
-  border: none;
-  padding: var(--fc-space-3) var(--fc-space-4);
+  border: 2px solid transparent;
+  padding: var(--fc-space-3) var(--fc-space-5);
   font: inherit;
-  font-weight: var(--fc-font-weight-medium);
+  font-size: 1rem;
+  font-weight: var(--fc-font-weight-semibold);
   cursor: pointer;
   color: var(--fc-color-text-subtle);
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  border-top-left-radius: var(--fc-radius-sm);
-  border-top-right-radius: var(--fc-radius-sm);
+  border-radius: 999px;
   transition:
     color var(--fc-transition-fast),
     background-color var(--fc-transition-fast),
-    border-color var(--fc-transition-fast);
+    border-color var(--fc-transition-fast),
+    transform var(--fc-transition-fast);
 }
 .fc-tabs__tab:hover {
   color: var(--fc-color-text);
-  background: var(--fc-color-surface-hover);
+  background: var(--fc-color-surface, #fff);
+  transform: translateY(-1px);
 }
 .fc-tabs__tab:focus-visible {
   outline: none;
   box-shadow: var(--fc-shadow-focus);
 }
 .fc-tabs__tab.is-active {
-  color: var(--fc-color-primary);
-  border-bottom-color: var(--fc-color-primary);
-  background: transparent;
+  color: #fff;
+  background: var(--fc-color-primary);
+  border-color: var(--fc-color-primary);
+  box-shadow: var(--fc-shadow-sm);
+}
+.fc-tabs__tab.is-active:hover {
+  color: #fff;
+  background: var(--fc-color-primary);
+  transform: translateY(-1px);
+}
+
+.fc-tabs__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
 .fc-tabs__panel {
   padding: var(--fc-space-5) var(--fc-space-1);
   color: var(--fc-color-text-soft);
-  line-height: 1.55;
-  animation: fc-tabs-fade 0.2s ease;
+  line-height: 1.6;
+  animation: fc-tabs-fade 0.25s ease;
 }
 
 @keyframes fc-tabs-fade {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .fc-tabs__list {
+    border-radius: var(--fc-radius-2xl, 18px);
+  }
+  .fc-tabs__tab {
+    padding: var(--fc-space-2) var(--fc-space-3);
+    font-size: 0.95rem;
   }
 }
