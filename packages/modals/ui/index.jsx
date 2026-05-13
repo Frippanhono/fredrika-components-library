@@ -42,7 +42,14 @@ const FOCUSABLE_SELECTOR = [
 export function Modal({ open, onClose, title, children, footer, size = "md" }) {
   const dialogRef = useRef(null);
   const previouslyFocused = useRef(null);
+  const onCloseRef = useRef(onClose);
   const titleId = useId();
+
+  // Håll alltid senaste onClose i en ref så att effekten inte återstartar
+  // (vilket skulle skriva över previouslyFocused med ett element inuti dialogen).
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   useEffect(() => {
     if (!open) return;
@@ -58,8 +65,9 @@ export function Modal({ open, onClose, title, children, footer, size = "md" }) {
 
     function handleKey(e) {
       if (e.key === "Escape") {
+        e.preventDefault();
         e.stopPropagation();
-        onClose?.();
+        onCloseRef.current?.();
         return;
       }
       if (e.key === "Tab") {
@@ -72,10 +80,11 @@ export function Modal({ open, onClose, title, children, footer, size = "md" }) {
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
         const active = document.activeElement;
-        if (e.shiftKey && (active === first || !dialogRef.current?.contains(active))) {
+        const insideDialog = dialogRef.current?.contains(active);
+        if (e.shiftKey && (active === first || !insideDialog)) {
           e.preventDefault();
           last.focus();
-        } else if (!e.shiftKey && active === last) {
+        } else if (!e.shiftKey && (active === last || !insideDialog)) {
           e.preventDefault();
           first.focus();
         }
@@ -99,7 +108,7 @@ export function Modal({ open, onClose, title, children, footer, size = "md" }) {
         toRestore.focus();
       }
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 
