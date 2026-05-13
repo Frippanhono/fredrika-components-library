@@ -27,6 +27,7 @@ export default defineConfig({
       "@minilogg/stat-card": pkg("stat-card"),
       "@minilogg/child-card": pkg("child-card"),
       "@minilogg/message-card": pkg("message-card"),
+      "@minilogg/meal-status-selector": pkg("meal-status-selector"),
     },
   },
   test: {
