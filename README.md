@@ -19,14 +19,18 @@ Detta startar Vite-demosajten (`src/`) där alla komponenter visas.
 | [@minilogg/buttons](packages/buttons)        | Knappar med varianter och storlekar.                     |
 | [@minilogg/cards](packages/cards)            | Kortprimitiver (Card, Header, Body, Footer, m.fl.).      |
 | [@minilogg/child-card](packages/child-card)  | Pedagogiskt kort för ett barn (namn, status, avatar).  |
+| [@minilogg/department-overview-card](packages/department-overview-card) | Hero-kort för en avdelning (barn, pedagoger, tema). |
 | [@minilogg/dropdowns](packages/dropdowns)    | Tillgängliga menyer som öppnas vid klick.                |
 | [@minilogg/inputs](packages/inputs)          | Textfält och textarea med etikett, hint och fel.         |
+| [@minilogg/meal-status-selector](packages/meal-status-selector) | Väljare för måltidsstatus: Bra, Okej, Inte bra. |
 | [@minilogg/message-card](packages/message-card) | Meddelande-/aviseringskort med roller och prioritet.  |
 | [@minilogg/modals](packages/modals)          | Dialogrutor renderade via portal.                        |
 | [@minilogg/navbar](packages/navbar)          | Responsiv toppnavigering.                                |
 | [@minilogg/stat-card](packages/stat-card)    | Kompakt nyckeltalskort för dashboards.                  |
 | [@minilogg/tabs](packages/tabs)              | Flikar för att växla mellan paneler.                     |
+| [@minilogg/teacher-card](packages/teacher-card) | Kort för pedagog/personal med titel och avdelning.    |
 | [@minilogg/toasts](packages/toasts)          | Toast-notifieringar via provider och `useToast`-hook.    |
+| [@minilogg/weekly-schedule](packages/weekly-schedule) | Överskådlig veckovy med tider och responsiv layout. |
 
 Varje paket har en egen README med detaljerad API-dokumentation och exempel. Varje exporterad komponent har även JSDoc-kommentarer som visas av redigeraren vid hover/autocomplete.
 
