@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { Button } from "@minilogg/buttons";
-import {
-  Card,
-  CardTitle,
-  CardMedia,
-  PostCard,
-} from "@minilogg/cards";
+import { PostCard } from "@minilogg/cards";
 import { ChildCard } from "@minilogg/child-card";
 import { DepartmentOverviewCard } from "@minilogg/department-overview-card";
 import { TeacherCard } from "@minilogg/teacher-card";
@@ -216,10 +211,26 @@ function Showcase() {
           </thead>
           <tbody>
             {[
-              { name: "Alma Andersson", department: "Solrosen", status: { label: "På plats", variant: "success" } },
-              { name: "Bruno Berg", department: "Solrosen", status: { label: "Sjukanmäld", variant: "warning" } },
-              { name: "Cleo Cederlund", department: "Maskrosen", status: { label: "På plats", variant: "success" } },
-              { name: "Doris Dahl", department: "Smörblomman", status: { label: "Ledig", variant: "info" } },
+              {
+                name: "Alma Andersson",
+                department: "Solrosen",
+                status: { label: "På plats", variant: "success" },
+              },
+              {
+                name: "Bruno Berg",
+                department: "Solrosen",
+                status: { label: "Sjukanmäld", variant: "warning" },
+              },
+              {
+                name: "Cleo Cederlund",
+                department: "Maskrosen",
+                status: { label: "På plats", variant: "success" },
+              },
+              {
+                name: "Doris Dahl",
+                department: "Smörblomman",
+                status: { label: "Ledig", variant: "info" },
+              },
             ].map((row) => (
               <tr key={row.name}>
                 <td>{row.name}</td>
@@ -308,21 +319,45 @@ function Showcase() {
             {[
               { href: "#navbar", label: "navbar", variant: "success" },
               { href: "#components", label: "buttons", variant: "info" },
-              { href: "#meal-status", label: "meal-status-selector", variant: "success" },
+              {
+                href: "#meal-status",
+                label: "meal-status-selector",
+                variant: "success",
+              },
               { href: "#badges", label: "badges", variant: "success" },
               { href: "#cards", label: "cards", variant: "info" },
-              { href: "#department-overview", label: "department-overview-card", variant: "success" },
+              {
+                href: "#department-overview",
+                label: "department-overview-card",
+                variant: "success",
+              },
               { href: "#child-card", label: "child-card", variant: "success" },
-              { href: "#teacher-card", label: "teacher-card", variant: "success" },
-              { href: "#message-card", label: "message-card", variant: "success" },
+              {
+                href: "#teacher-card",
+                label: "teacher-card",
+                variant: "success",
+              },
+              {
+                href: "#message-card",
+                label: "message-card",
+                variant: "success",
+              },
               { href: "#dropdown-tabs", label: "dropdowns", variant: "info" },
               { href: "#dropdown-tabs", label: "tabs", variant: "info" },
-              { href: "#weekly-schedule", label: "weekly-schedule", variant: "success" },
+              {
+                href: "#weekly-schedule",
+                label: "weekly-schedule",
+                variant: "success",
+              },
               { href: "#forms", label: "inputs", variant: "success" },
               { href: "#feedback", label: "modals", variant: "info" },
               { href: "#feedback", label: "toasts", variant: "info" },
             ].map((item) => (
-              <a key={item.label} href={item.href} className="app__hero-toc-link">
+              <a
+                key={item.label}
+                href={item.href}
+                className="app__hero-toc-link"
+              >
                 <Badge variant={item.variant}>{item.label}</Badge>
               </a>
             ))}
@@ -333,8 +368,8 @@ function Showcase() {
           <h2 className="section__title">Navbar</h2>
           <p className="section__hint">
             Navigeringsmeny som visas högst upp på sidan i desktop och fast
-            längst ner i mobilvy. Stödjer ikoner, avatarer och en markerad
-            aktiv länk.
+            längst ner i mobilvy. Stödjer ikoner, avatarer och en markerad aktiv
+            länk.
           </p>
 
           <h3 className="section__subtitle">Desktopvy</h3>
@@ -355,8 +390,8 @@ function Showcase() {
             <div className="phone-frame__screen">
               <div className="phone-frame__content">
                 <p className="phone-frame__placeholder">
-                  Innehåll i appen visas här. Navigeringen är fast längst ner
-                  så den alltid är inom tummens räckhåll.
+                  Innehåll i appen visas här. Navigeringen är fast längst ner så
+                  den alltid är inom tummens räckhåll.
                 </p>
               </div>
               <div className="phone-frame__navbar">
@@ -421,7 +456,8 @@ function Showcase() {
           <p className="section__hint">
             Generella kort som grupperar relaterat innehåll. Med modifieraren
             <code> fc-card--row </code>kan ett kort visa en bild till vänster
-            och innehåll till höger – passar t.ex. för en "Senaste inlägg"-lista.
+            och innehåll till höger – passar t.ex. för en "Senaste
+            inlägg"-lista.
           </p>
 
           <h3 className="section__subtitle">Senaste inlägg</h3>
@@ -533,8 +569,7 @@ function Showcase() {
         <section id="teacher-card" className="section">
           <h2 className="section__title">TeacherCard</h2>
           <p className="section__hint">
-            Kort för personal på en avdelning – visar titel, namn och
-            avdelning.
+            Kort för personal på en avdelning – visar titel, namn och avdelning.
           </p>
           <h3 className="section__subtitle">Personal på avdelningen</h3>
           <div className="row-cards">
@@ -611,8 +646,7 @@ function Showcase() {
                 sender: { name: "Lisa Dahl", role: "guardian" },
                 recipient: { name: "Solrosen", role: "teacher" },
                 subject: "Doris är sjuk idag",
-                preview:
-                  "Hej! Doris vaknade med feber så hon stannar hemma.",
+                preview: "Hej! Doris vaknade med feber så hon stannar hemma.",
                 timestamp: "07:15",
               },
               {
@@ -623,8 +657,7 @@ function Showcase() {
                 priority: "high",
                 timestamp: new Date(),
                 attachments: 2,
-                body:
-                  "Förskolan håller stängt för planeringsdag. Behöver du barnomsorg kontakta kommunens jourförskola.",
+                body: "Förskolan håller stängt för planeringsdag. Behöver du barnomsorg kontakta kommunens jourförskola.",
               },
             ].map((item) =>
               item.type === "notice" ? (
