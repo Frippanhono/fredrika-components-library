@@ -46,6 +46,7 @@ import { Button } from "@minilogg/buttons";
 | `CardBody`      | Huvudinnehåll.                                                |
 | `CardFooter`    | Nedre sektion, ofta knappar eller metadata.                   |
 | `StatCard`      | Färdig nyckeltalsruta för dashboards.                         |
+| `ChildCard`     | Pedagogiskt kort för ett barn (namn, avdelning, status, avatar). |
 
 Alla komponenter tar `children` och `className` och vidarebefordrar övriga props till det underliggande elementet.
 
@@ -76,6 +77,38 @@ Alla komponenter tar `children` och `className` och vidarebefordrar övriga prop
   </CardHeader>
 </Card>
 ```
+
+### ChildCard
+
+Färdigt, pedagogiskt kort för ett barn. Bygger ovanpå `Card` och tar de
+vanligaste fälten som direkta props.
+
+```jsx
+import { ChildCard } from "@minilogg/cards";
+
+<ChildCard
+  name="Alma Andersson"
+  department="Solrosen"
+  status="present"
+  avatar="/avatars/alma.jpg"
+  onClick={() => openChild("alma")}
+/>;
+```
+
+| Prop          | Typ                                                                                  | Beskrivning                                                                 |
+| ------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| `name`        | `string`                                                                             | Barnets namn (rubrik och underlag för initialer).                          |
+| `department`  | `ReactNode`                                                                          | Avdelning eller grupp (underrubrik).                                       |
+| `status`      | `"present" \| "absent" \| "sick" \| "leave" \| "arriving" \| "pickedup" \| { label, tone }` | Närvarostatus. Sträng matchar en preset, objekt ger egen etikett.   |
+| `avatar`      | `ReactNode \| string`                                                                | Bild-URL eller ReactNode. Saknas avatar visas automatiska initialer.       |
+| `avatarAlt`   | `string`                                                                             | Alternativtext för bild-avatar (default = namnet).                         |
+| `onClick`     | `(e) => void`                                                                        | Gör kortet klickbart (Enter/Space hanteras automatiskt).                   |
+| `selected`    | `boolean`                                                                            | Markera som valt.                                                          |
+| `footer`      | `ReactNode`                                                                          | Valfri footer, t.ex. knappar.                                              |
+| `children`    | `ReactNode`                                                                          | Valfritt extra innehåll (renderas i `CardBody`).                           |
+
+Statuspresets exporteras som `CHILD_STATUS_PRESETS` om du vill återanvända
+etiketterna någon annanstans i UI:t.
 
 ### Aktivitet
 

@@ -242,3 +242,175 @@ export function StatCard({
     </Card>
   );
 }
+
+/**
+ * Fördefinierade närvarostatusar för `ChildCard`.
+ * Mappar en kort nyckel till en svensk etikett och en visuell ton.
+ *
+ * Nyckeln kan användas direkt på `ChildCard`-propet `status`. Vill du visa
+ * en helt egen status skickar du in ett objekt `{ label, tone }` istället.
+ */
+export const CHILD_STATUS_PRESETS = {
+  present: { label: "På plats", tone: "success" },
+  absent: { label: "Frånvarande", tone: "danger" },
+  sick: { label: "Sjukanmäld", tone: "warning" },
+  leave: { label: "Ledig", tone: "info" },
+  arriving: { label: "På väg", tone: "info" },
+  pickedup: { label: "Hämtad", tone: "neutral" },
+};
+
+function getInitials(name = "") {
+  const parts = String(name).trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function resolveStatus(status) {
+  if (!status) return null;
+  if (typeof status === "string") {
+    return CHILD_STATUS_PRESETS[status] ?? { label: status, tone: "neutral" };
+  }
+  if (typeof status === "object" && status.label) {
+    return { tone: "neutral", ...status };
+  }
+  return null;
+}
+
+/**
+ * ChildCard – pedagogiskt kort för att presentera ett barn i förskole-UI.
+ *
+ * Sammanställer de vanligaste fälten – **namn**, **avdelning**, **status**
+ * och **avatar** – ovanpå `Card`-primitiverna med tydliga defaultvärden,
+ * automatiska initialer som avatarfallback och färgkodad statusetikett.
+ *
+ * @param {object} props
+ * @param {string} props.name - Barnets namn (visas som rubrik). Används även för initialer.
+ * @param {React.ReactNode} [props.department] - Avdelning eller grupp (visas som underrubrik).
+ * @param {keyof typeof CHILD_STATUS_PRESETS | {label: React.ReactNode, tone?: "neutral"|"info"|"success"|"warning"|"danger"}} [props.status]
+ *   - Närvarostatus. Antingen en fördefinierad nyckel (t.ex. `"present"`)
+ *     eller ett objekt `{ label, tone }`.
+ * @param {React.ReactNode | string} [props.avatar] - Avatar. Sträng tolkas som bild-URL,
+ *   ReactNode renderas som-den-är. Saknas avatar visas automatiska initialer.
+ * @param {string} [props.avatarAlt] - Alternativtext för bild-avatar (default = namnet).
+ * @param {Array<string | {name: string}>} [props.guardians] - Vårdnadshavare som visas
+ *   med en liten "V"-markör ovanför barnets namn. Strängar tolkas som namn.
+ * @param {React.ReactNode} [props.children] - Valfritt extra innehåll (visas i `CardBody`).
+ * @param {React.ReactNode} [props.footer] - Valfri footer, t.ex. knappar.
+ * @param {(e: React.MouseEvent|React.KeyboardEvent) => void} [props.onClick] - Gör kortet klickbart.
+ * @param {boolean} [props.selected=false] - Markerar kortet som valt.
+ * @param {string} [props.className] - Extra CSS-klasser.
+ *
+ * @example
+ * <ChildCard
+ *   name="Adam Persson"
+ *   department="Solrosen"
+ *   status="present"
+ *   guardians={["Anja Persson", "Peter Persson"]}
+ * />
+ *
+ * @example
+ * <ChildCard
+ *   name="Bruno Berg"
+ *   department="Maskrosen"
+ *   status={{ label: "Hämtas 14:30", tone: "info" }}
+ *   avatar="/avatars/bruno.jpg"
+ *   onClick={() => openChild(child.id)}
+ * />
+ */
+export function ChildCard({
+  name,
+  department,
+  status,
+  avatar,
+  avatarAlt,
+  guardians,
+  children,
+  footer,
+  onClick,
+  selected = false,
+  className = "",
+  ...rest
+}) {
+  const resolvedStatus = resolveStatus(status);
+  const guardianList = (guardians ?? [])
+    .map((g) => (typeof g === "string" ? { name: g } : g))
+    .filter((g) => g && g.name);
+
+  let avatarContent;
+  if (avatar == null) {
+    avatarContent = (
+      <span className="fc-card__child-avatar-initials" aria-hidden="true">
+        {getInitials(name)}
+      </span>
+    );
+  } else if (typeof avatar === "string") {
+    avatarContent = (
+      <img
+        className="fc-card__child-avatar-img"
+        src={avatar}
+        alt={avatarAlt ?? name ?? ""}
+      />
+    );
+  } else {
+    avatarContent = avatar;
+  }
+
+  return (
+    <Card
+      onClick={onClick}
+      selected={selected}
+      className={`fc-card--child ${className}`}
+      {...rest}
+    >
+      <CardHeader>
+        <CardMedia className="fc-card__child-avatar">{avatarContent}</CardMedia>
+        <div className="fc-card__child-identity">
+          {guardianList.length > 0 && (
+            <ul
+              className="fc-card__child-guardians"
+              aria-label="Vårdnadshavare"
+            >
+              {guardianList.map((g, i) => (
+                <li key={`${g.name}-${i}`} className="fc-card__child-guardian">
+                  <span className="fc-card__child-guardian-name">{g.name}</span>
+                  <span
+                    className="fc-card__role-badge fc-card__role-badge--guardian"
+                    aria-label="Vårdnadshavare"
+                    title="Vårdnadshavare"
+                  >
+                    V
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className="fc-card__child-nameline">
+            <CardTitle className="fc-card__child-name">{name}</CardTitle>
+            <span
+              className="fc-card__role-badge fc-card__role-badge--child"
+              aria-label="Barn"
+              title="Barn"
+            >
+              B
+            </span>
+          </div>
+          {department && <CardSubtitle>{department}</CardSubtitle>}
+        </div>
+        {resolvedStatus && (
+          <span
+            className={`fc-card__child-status fc-card__child-status--${resolvedStatus.tone}`}
+          >
+            <span
+              className="fc-card__child-status-dot"
+              aria-hidden="true"
+            />
+            {resolvedStatus.label}
+          </span>
+        )}
+      </CardHeader>
+      {children != null && <CardBody>{children}</CardBody>}
+      {footer != null && <CardFooter>{footer}</CardFooter>}
+    </Card>
+  );
+}
