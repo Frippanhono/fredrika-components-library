@@ -138,6 +138,64 @@ export function CardActions({ children, className = "", ...rest }) {
 }
 
 /**
+ * PostCard – horisontellt kort för en "Senaste inlägg"-lista.
+ *
+ * Visar en bild till vänster, titel överst till höger och en rad med
+ * datum + "Läs mer"-länk längst ner.
+ *
+ * @param {object} props
+ * @param {string} props.image - URL/källa till bilden.
+ * @param {string} [props.imageAlt=""] - Alt-text för bilden. Lämna tom för dekorativ bild.
+ * @param {React.ReactNode} props.title - Rubriktext/inläggets titel.
+ * @param {React.ReactNode} props.date - Datum att visa (t.ex. "23 april").
+ * @param {string} [props.href="#"] - Mål för "Läs mer"-länken.
+ * @param {string} [props.readMoreLabel="Läs mer"]
+ * @param {(e: any) => void} [props.onClick] - Klick på hela kortet.
+ * @param {(e: any) => void} [props.onReadMore] - Klick på "Läs mer"-länken.
+ * @param {string} [props.className]
+ */
+export function PostCard({
+  image,
+  imageAlt = "",
+  title,
+  date,
+  href = "#",
+  readMoreLabel = "Läs mer",
+  onClick,
+  onReadMore,
+  className = "",
+  ...rest
+}) {
+  return (
+    <Card
+      className={`fc-card--row ${className}`}
+      onClick={onClick}
+      {...rest}
+    >
+      <CardMedia aria-hidden={imageAlt ? undefined : "true"}>
+        <img src={image} alt={imageAlt} />
+      </CardMedia>
+      <div className="fc-card__content">
+        <CardTitle>{title}</CardTitle>
+        <div className="fc-card__row-footer">
+          <span>{date}</span>
+          <a
+            href={href}
+            className="fc-card__read-more"
+            onClick={(e) => {
+              e.stopPropagation();
+              onReadMore?.(e);
+            }}
+          >
+            {readMoreLabel}
+          </a>
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+/**
  * getInitials – returnerar 1–2 versaler från ett namn.
  * Delas av domänkort som behöver fallback-avatar.
  */

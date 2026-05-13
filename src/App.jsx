@@ -4,6 +4,7 @@ import {
   Card,
   CardTitle,
   CardMedia,
+  PostCard,
 } from "@minilogg/cards";
 import { ChildCard } from "@minilogg/child-card";
 import { DepartmentOverviewCard } from "@minilogg/department-overview-card";
@@ -148,6 +149,153 @@ function Showcase() {
     { label: "Mer", href: "/more", icon: <MoreIcon /> },
   ];
 
+  const tabItems = [
+    {
+      label: "Översikt",
+      icon: "🌼",
+      content: (
+        <div className="dashboard">
+          <div className="dashboard__stats">
+            <div className="stat">
+              <span className="stat__label">Barn</span>
+              <span className="stat__value">24</span>
+              <Badge variant="info">3 avdelningar</Badge>
+            </div>
+            <div className="stat">
+              <span className="stat__label">Närvaro idag</span>
+              <span className="stat__value">21</span>
+              <Badge variant="success">88%</Badge>
+            </div>
+            <div className="stat">
+              <span className="stat__label">Aktiviteter</span>
+              <span className="stat__value">5</span>
+              <Badge variant="info">denna vecka</Badge>
+            </div>
+            <div className="stat">
+              <span className="stat__label">Olästa meddelanden</span>
+              <span className="stat__value">2</span>
+              <Badge variant="warning">från vårdnadshavare</Badge>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      label: "Dagens aktiviteter",
+      icon: "🎨",
+      content: (
+        <ul className="activity">
+          <li>
+            <Badge variant="info">08:30</Badge> Samling och morgonsång
+          </li>
+          <li>
+            <Badge variant="success">09:15</Badge> Utflykt till skogen – tema
+            "Höstens färger"
+          </li>
+          <li>
+            <Badge variant="info">11:30</Badge> Lunch och vila
+          </li>
+          <li>
+            <Badge variant="warning">14:00</Badge> Skapande verkstad – kom ihåg
+            förkläden
+          </li>
+        </ul>
+      ),
+    },
+    {
+      label: "Barngrupp",
+      icon: "🧒",
+      content: (
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Namn</th>
+              <th>Avdelning</th>
+              <th>Närvaro</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { name: "Alma Andersson", department: "Solrosen", status: { label: "På plats", variant: "success" } },
+              { name: "Bruno Berg", department: "Solrosen", status: { label: "Sjukanmäld", variant: "warning" } },
+              { name: "Cleo Cederlund", department: "Maskrosen", status: { label: "På plats", variant: "success" } },
+              { name: "Doris Dahl", department: "Smörblomman", status: { label: "Ledig", variant: "info" } },
+            ].map((row) => (
+              <tr key={row.name}>
+                <td>{row.name}</td>
+                <td>{row.department}</td>
+                <td>
+                  <Badge variant={row.status.variant}>{row.status.label}</Badge>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ),
+    },
+    {
+      label: "Inställningar",
+      icon: "⚙️",
+      content: (
+        <div className="form-grid">
+          <Input label="Förskola" defaultValue="Lilla Ekens förskola" />
+          <Input label="Kontakt" defaultValue="rektor@lillaeken.se" />
+        </div>
+      ),
+    },
+  ];
+
+  const scheduleEvents = [
+    {
+      day: "mon",
+      start: "08:30",
+      end: "09:15",
+      title: "Samling & morgonsång",
+      tone: "info",
+    },
+    {
+      day: "mon",
+      start: "11:30",
+      end: "12:30",
+      title: "Lunch och vila",
+    },
+    {
+      day: "tue",
+      start: "09:00",
+      end: "11:00",
+      title: "Utflykt – skogen",
+      description: 'Tema "Höstens färger"',
+      tone: "success",
+    },
+    {
+      day: "wed",
+      start: "10:00",
+      end: "11:00",
+      title: "Utevistelse på gården",
+    },
+    {
+      day: "wed",
+      start: "14:00",
+      end: "15:30",
+      title: "Skapande verkstad",
+      description: "Kom ihåg förkläden",
+      tone: "warning",
+      onClick: () => toast.info("Öppnar Skapande verkstad"),
+    },
+    {
+      day: "thu",
+      start: "09:30",
+      title: "Sångsamling",
+      tone: "info",
+    },
+    {
+      day: "fri",
+      start: "13:00",
+      end: "14:00",
+      title: "Filmstund",
+    },
+  ];
+
   return (
     <div className="app">
       <main className="app__main">
@@ -278,50 +426,32 @@ function Showcase() {
 
           <h3 className="section__subtitle">Senaste inlägg</h3>
           <div className="stack-cards">
-            <Card
-              className="fc-card--row"
-              onClick={() => toast.info("Öppnar inlägg")}
-            >
-              <CardMedia aria-hidden="true">
-                <img src={FOREST_POST_IMAGE} alt="" />
-              </CardMedia>
-              <div className="fc-card__content">
-                <CardTitle>
-                  Utflykt till skogen – vad vi hittade bland löven!
-                </CardTitle>
-                <div className="fc-card__row-footer">
-                  <span>23 april</span>
-                  <a
-                    href="#cards"
-                    className="fc-card__read-more"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    Läs mer
-                  </a>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="fc-card--row">
-              <CardMedia aria-hidden="true">
-                <img src={PAINT_POST_IMAGE} alt="" />
-              </CardMedia>
-              <div className="fc-card__content">
-                <CardTitle>
-                  Måleri på avdelningen – färgglada konstverk
-                </CardTitle>
-                <div className="fc-card__row-footer">
-                  <span>18 april</span>
-                  <a
-                    href="#cards"
-                    className="fc-card__read-more"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    Läs mer
-                  </a>
-                </div>
-              </div>
-            </Card>
+            {[
+              {
+                id: "forest",
+                image: FOREST_POST_IMAGE,
+                imageAlt: "Höstlöv och gröna stövlar i skogen",
+                title: "Utflykt till skogen – vad vi hittade bland löven!",
+                date: "23 april",
+              },
+              {
+                id: "paint",
+                image: PAINT_POST_IMAGE,
+                imageAlt: "Färgglada penseldrag och färgklickar",
+                title: "Måleri på avdelningen – färgglada konstverk",
+                date: "18 april",
+              },
+            ].map((post) => (
+              <PostCard
+                key={post.id}
+                image={post.image}
+                imageAlt={post.imageAlt}
+                title={post.title}
+                date={post.date}
+                href="#cards"
+                onClick={() => toast.info(`Öppnar: ${post.title}`)}
+              />
+            ))}
           </div>
         </section>
 
@@ -331,12 +461,23 @@ function Showcase() {
             Hero/header-kort som presenterar en avdelning med namn, antal
             inskrivna barn, antal pedagoger och aktuellt tema.
           </p>
-          <DepartmentOverviewCard
-            name="Snäckan"
-            childrenCount={16}
-            teachersCount={3}
-            theme="Färger och former"
-          />
+          {[
+            {
+              id: "snackan",
+              name: "Snäckan",
+              childrenCount: 16,
+              teachersCount: 3,
+              theme: "Färger och former",
+            },
+          ].map((dept) => (
+            <DepartmentOverviewCard
+              key={dept.id}
+              name={dept.name}
+              childrenCount={dept.childrenCount}
+              teachersCount={dept.teachersCount}
+              theme={dept.theme}
+            />
+          ))}
         </section>
 
         <section id="child-card" className="section">
@@ -346,31 +487,46 @@ function Showcase() {
             status och avatar.
           </p>
           <div className="stack-cards">
-            <ChildCard
-              name="Alma Andersson"
-              department="Solrosen"
-              status="present"
-              guardians={["Anja Andersson", "Per Andersson"]}
-              onClick={() => toast.info("Öppnar Alma")}
-            />
-            <ChildCard
-              name="Adam Persson"
-              department="Solrosen"
-              status="present"
-              guardians={["Anja Persson", "Peter Persson"]}
-            />
-            <ChildCard
-              name="Cleo Cederlund"
-              department="Maskrosen"
-              status="leave"
-              guardians={["Sara Cederlund"]}
-            />
-            <ChildCard
-              name="Doris Dahl"
-              department="Smörblomman"
-              status={{ label: "Hämtas 14:30", tone: "info" }}
-              guardians={["Mikael Dahl", "Lisa Dahl"]}
-            />
+            {[
+              {
+                id: "alma",
+                name: "Alma Andersson",
+                department: "Solrosen",
+                status: "present",
+                guardians: ["Anja Andersson", "Per Andersson"],
+                onClick: () => toast.info("Öppnar Alma"),
+              },
+              {
+                id: "adam",
+                name: "Adam Persson",
+                department: "Solrosen",
+                status: "present",
+                guardians: ["Anja Persson", "Peter Persson"],
+              },
+              {
+                id: "cleo",
+                name: "Cleo Cederlund",
+                department: "Maskrosen",
+                status: "leave",
+                guardians: ["Sara Cederlund"],
+              },
+              {
+                id: "doris",
+                name: "Doris Dahl",
+                department: "Smörblomman",
+                status: { label: "Hämtas 14:30", tone: "info" },
+                guardians: ["Mikael Dahl", "Lisa Dahl"],
+              },
+            ].map((child) => (
+              <ChildCard
+                key={child.id}
+                name={child.name}
+                department={child.department}
+                status={child.status}
+                guardians={child.guardians}
+                onClick={child.onClick}
+              />
+            ))}
           </div>
         </section>
 
@@ -382,27 +538,41 @@ function Showcase() {
           </p>
           <h3 className="section__subtitle">Personal på avdelningen</h3>
           <div className="row-cards">
-            <TeacherCard
-              name="Anja Jansson"
-              title="forskollarare"
-              department="Solrosen"
-              onClick={() => toast.info("Öppnar Anja")}
-            />
-            <TeacherCard
-              name="Tove Karlsson"
-              title="forskollarare"
-              department="Solrosen"
-            />
-            <TeacherCard
-              name="Lena Johansson"
-              title="barnskotare"
-              department="Solrosen"
-            />
-            <TeacherCard
-              name="Sven Sköld"
-              title={{ label: "Vikarie v.24", tone: "warning" }}
-              department="Maskrosen"
-            />
+            {[
+              {
+                id: "anja",
+                name: "Anja Jansson",
+                title: "forskollarare",
+                department: "Solrosen",
+                onClick: () => toast.info("Öppnar Anja"),
+              },
+              {
+                id: "tove",
+                name: "Tove Karlsson",
+                title: "forskollarare",
+                department: "Solrosen",
+              },
+              {
+                id: "lena",
+                name: "Lena Johansson",
+                title: "barnskotare",
+                department: "Solrosen",
+              },
+              {
+                id: "sven",
+                name: "Sven Sköld",
+                title: { label: "Vikarie v.24", tone: "warning" },
+                department: "Maskrosen",
+              },
+            ].map((teacher) => (
+              <TeacherCard
+                key={teacher.id}
+                name={teacher.name}
+                title={teacher.title}
+                department={teacher.department}
+                onClick={teacher.onClick}
+              />
+            ))}
           </div>
         </section>
 
@@ -413,41 +583,76 @@ function Showcase() {
             meddelanden, anslag och aviseringar.
           </p>
           <div className="stack-cards">
-            <MessageCard
-              sender={{ name: "Anna Lärare", role: "teacher" }}
-              recipient={{ name: "Per Persson", role: "guardian" }}
-              subject="Utvecklingssamtal v.24"
-              preview="Hej Per! Vill du boka tid för utvecklingssamtal nästa vecka? Jag har tider tisdag eftermiddag och torsdag förmiddag."
-              timestamp="09:42"
-              unread
-              attachments={1}
-              onClick={() => toast.info("Öppnar meddelande")}
-              actions={
-                <>
-                  <Button size="sm" variant="secondary">
-                    Markera läst
-                  </Button>
-                  <Button size="sm">Svara</Button>
-                </>
-              }
-            />
-            <MessageCard
-              sender={{ name: "Lisa Dahl", role: "guardian" }}
-              recipient={{ name: "Solrosen", role: "teacher" }}
-              subject="Doris är sjuk idag"
-              preview="Hej! Doris vaknade med feber så hon stannar hemma."
-              timestamp="07:15"
-            />
-            <NoticeCard
-              sender={{ name: "Förskolan Solrosen", role: "system" }}
-              subject="Stängt fredag den 7 juni – planeringsdag"
-              priority="high"
-              timestamp={new Date()}
-              attachments={2}
-            >
-              Förskolan håller stängt för planeringsdag. Behöver du barnomsorg
-              kontakta kommunens jourförskola.
-            </NoticeCard>
+            {[
+              {
+                id: "msg-utveckling",
+                type: "message",
+                sender: { name: "Anna Lärare", role: "teacher" },
+                recipient: { name: "Per Persson", role: "guardian" },
+                subject: "Utvecklingssamtal v.24",
+                preview:
+                  "Hej Per! Vill du boka tid för utvecklingssamtal nästa vecka? Jag har tider tisdag eftermiddag och torsdag förmiddag.",
+                timestamp: "09:42",
+                unread: true,
+                attachments: 1,
+                onClick: () => toast.info("Öppnar meddelande"),
+                actions: (
+                  <>
+                    <Button size="sm" variant="secondary">
+                      Markera läst
+                    </Button>
+                    <Button size="sm">Svara</Button>
+                  </>
+                ),
+              },
+              {
+                id: "msg-sjuk",
+                type: "message",
+                sender: { name: "Lisa Dahl", role: "guardian" },
+                recipient: { name: "Solrosen", role: "teacher" },
+                subject: "Doris är sjuk idag",
+                preview:
+                  "Hej! Doris vaknade med feber så hon stannar hemma.",
+                timestamp: "07:15",
+              },
+              {
+                id: "notice-planering",
+                type: "notice",
+                sender: { name: "Förskolan Solrosen", role: "system" },
+                subject: "Stängt fredag den 7 juni – planeringsdag",
+                priority: "high",
+                timestamp: new Date(),
+                attachments: 2,
+                body:
+                  "Förskolan håller stängt för planeringsdag. Behöver du barnomsorg kontakta kommunens jourförskola.",
+              },
+            ].map((item) =>
+              item.type === "notice" ? (
+                <NoticeCard
+                  key={item.id}
+                  sender={item.sender}
+                  subject={item.subject}
+                  priority={item.priority}
+                  timestamp={item.timestamp}
+                  attachments={item.attachments}
+                >
+                  {item.body}
+                </NoticeCard>
+              ) : (
+                <MessageCard
+                  key={item.id}
+                  sender={item.sender}
+                  recipient={item.recipient}
+                  subject={item.subject}
+                  preview={item.preview}
+                  timestamp={item.timestamp}
+                  unread={item.unread}
+                  attachments={item.attachments}
+                  onClick={item.onClick}
+                  actions={item.actions}
+                />
+              ),
+            )}
           </div>
         </section>
 
@@ -466,120 +671,7 @@ function Showcase() {
             />
           </div>
 
-          <Tabs
-            tabs={[
-              {
-                label: "Översikt",
-                icon: "🌼",
-                content: (
-                  <div className="dashboard">
-                    <div className="dashboard__stats">
-                      <div className="stat">
-                        <span className="stat__label">Barn</span>
-                        <span className="stat__value">24</span>
-                        <Badge variant="info">3 avdelningar</Badge>
-                      </div>
-                      <div className="stat">
-                        <span className="stat__label">Närvaro idag</span>
-                        <span className="stat__value">21</span>
-                        <Badge variant="success">88%</Badge>
-                      </div>
-                      <div className="stat">
-                        <span className="stat__label">Aktiviteter</span>
-                        <span className="stat__value">5</span>
-                        <Badge variant="info">denna vecka</Badge>
-                      </div>
-                      <div className="stat">
-                        <span className="stat__label">Olästa meddelanden</span>
-                        <span className="stat__value">2</span>
-                        <Badge variant="warning">från vårdnadshavare</Badge>
-                      </div>
-                    </div>
-                  </div>
-                ),
-              },
-              {
-                label: "Dagens aktiviteter",
-                icon: "🎨",
-                content: (
-                  <ul className="activity">
-                    <li>
-                      <Badge variant="info">08:30</Badge> Samling och morgonsång
-                    </li>
-                    <li>
-                      <Badge variant="success">09:15</Badge> Utflykt till skogen
-                      – tema "Höstens färger"
-                    </li>
-                    <li>
-                      <Badge variant="info">11:30</Badge> Lunch och vila
-                    </li>
-                    <li>
-                      <Badge variant="warning">14:00</Badge> Skapande verkstad –
-                      kom ihåg förkläden
-                    </li>
-                  </ul>
-                ),
-              },
-              {
-                label: "Barngrupp",
-                icon: "🧒",
-                content: (
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th>Namn</th>
-                        <th>Avdelning</th>
-                        <th>Närvaro</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Alma Andersson</td>
-                        <td>Solrosen</td>
-                        <td>
-                          <Badge variant="success">På plats</Badge>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Bruno Berg</td>
-                        <td>Solrosen</td>
-                        <td>
-                          <Badge variant="warning">Sjukanmäld</Badge>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Cleo Cederlund</td>
-                        <td>Maskrosen</td>
-                        <td>
-                          <Badge variant="success">På plats</Badge>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Doris Dahl</td>
-                        <td>Smörblomman</td>
-                        <td>
-                          <Badge variant="info">Ledig</Badge>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                ),
-              },
-              {
-                label: "Inställningar",
-                icon: "⚙️",
-                content: (
-                  <div className="form-grid">
-                    <Input
-                      label="Förskola"
-                      defaultValue="Lilla Ekens förskola"
-                    />
-                    <Input label="Kontakt" defaultValue="rektor@lillaeken.se" />
-                  </div>
-                ),
-              },
-            ]}
-          />
+          <Tabs tabs={tabItems} />
         </section>
 
         <section id="weekly-schedule" className="section">
@@ -588,59 +680,7 @@ function Showcase() {
             Enkel veckovy med kort, tider och responsiv layout. Visar mån–fre
             som standard och staplar till en kolumn på smala skärmar.
           </p>
-          <WeeklySchedule
-            title="Vecka 19"
-            events={[
-              {
-                day: "mon",
-                start: "08:30",
-                end: "09:15",
-                title: "Samling & morgonsång",
-                tone: "info",
-              },
-              {
-                day: "mon",
-                start: "11:30",
-                end: "12:30",
-                title: "Lunch och vila",
-              },
-              {
-                day: "tue",
-                start: "09:00",
-                end: "11:00",
-                title: "Utflykt – skogen",
-                description: 'Tema "Höstens färger"',
-                tone: "success",
-              },
-              {
-                day: "wed",
-                start: "10:00",
-                end: "11:00",
-                title: "Utevistelse på gården",
-              },
-              {
-                day: "wed",
-                start: "14:00",
-                end: "15:30",
-                title: "Skapande verkstad",
-                description: "Kom ihåg förkläden",
-                tone: "warning",
-                onClick: () => toast.info("Öppnar Skapande verkstad"),
-              },
-              {
-                day: "thu",
-                start: "09:30",
-                title: "Sångsamling",
-                tone: "info",
-              },
-              {
-                day: "fri",
-                start: "13:00",
-                end: "14:00",
-                title: "Filmstund",
-              },
-            ]}
-          />
+          <WeeklySchedule title="Vecka 19" events={scheduleEvents} />
         </section>
 
         <section id="forms" className="section">
