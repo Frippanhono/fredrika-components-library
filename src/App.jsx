@@ -17,6 +17,7 @@ import { Navbar } from "@minilogg/navbar";
 import { Input, Textarea } from "@minilogg/inputs";
 import { Badge } from "@minilogg/badges";
 import { WeeklySchedule } from "@minilogg/weekly-schedule";
+import { MealStatusSelector } from "@minilogg/meal-status-selector";
 import "./App.css";
 
 const AbsenceIcon = () => (
@@ -178,6 +179,20 @@ function Showcase() {
             <Button size="sm">Small</Button>
             <Button size="md">Medium</Button>
             <Button size="lg">Large</Button>
+          </div>
+        </section>
+
+        <section className="section">
+          <h2 className="section__title">Meal Status Selector</h2>
+          <p className="section__hint">
+            Horisontell väljare för att rapportera hur en måltid gick. Stora
+            touch-ytor, tydligt vald-state och stöd för tangentbord.
+          </p>
+          <div style={{ maxWidth: 520 }}>
+            <MealStatusSelector
+              defaultValue="bra"
+              onChange={(v) => toast.info(`Måltid markerad som: ${v}`)}
+            />
           </div>
         </section>
 
