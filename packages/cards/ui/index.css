@@ -353,3 +353,165 @@
   color: var(--fc-color-danger, #dc2626);
   border-color: color-mix(in srgb, var(--fc-color-danger, #dc2626) 35%, transparent);
 }
+
+/* MessageCard / NoticeCard */
+.fc-card__role-badge--teacher {
+  background: #7c3aed;
+}
+.fc-card__role-badge--admin {
+  background: #b45309;
+}
+.fc-card__role-badge--system {
+  background: var(--fc-color-text-soft, #6b7280);
+}
+
+.fc-card--message .fc-card__header {
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.fc-card--message-unread {
+  background: color-mix(
+    in srgb,
+    var(--fc-color-info, #3b82f6) 4%,
+    var(--fc-color-surface)
+  );
+}
+
+.fc-card--message-priority {
+  box-shadow:
+    var(--fc-shadow-sm),
+    inset 0 0 0 1px
+      color-mix(in srgb, var(--fc-color-warning, #d97706) 35%, transparent);
+}
+
+.fc-card__msg-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--fc-color-surface-alt);
+  border: 1px solid var(--fc-color-border);
+  overflow: hidden;
+  flex: 0 0 40px;
+  color: var(--fc-color-text);
+  font-weight: var(--fc-font-weight-semibold);
+}
+
+.fc-card__msg-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fc-card__msg-avatar-initials {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.fc-card__msg-identity {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: 2px;
+}
+
+.fc-card__msg-senderline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.fc-card__msg-sender {
+  font-weight: var(--fc-font-weight-semibold);
+  color: var(--fc-color-text);
+  font-size: 0.95rem;
+}
+
+.fc-card--message-unread .fc-card__msg-sender {
+  font-weight: var(--fc-font-weight-bold, 700);
+}
+
+.fc-card__msg-unread-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fc-color-info, #3b82f6);
+  flex: 0 0 8px;
+  display: inline-block;
+}
+
+.fc-card__msg-priority {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: var(--fc-font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fc-color-warning, #d97706);
+  background: color-mix(
+    in srgb,
+    var(--fc-color-warning, #d97706) 14%,
+    transparent
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--fc-color-warning, #d97706) 35%, transparent);
+}
+
+.fc-card__msg-recipientline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--fc-color-text-soft);
+  flex-wrap: wrap;
+}
+
+.fc-card__msg-recipient-label {
+  opacity: 0.85;
+}
+
+.fc-card__msg-recipient {
+  color: var(--fc-color-text);
+}
+
+.fc-card__msg-time {
+  align-self: flex-start;
+}
+
+.fc-card__msg-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-1, 4px);
+}
+
+.fc-card__msg-subject {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: var(--fc-font-weight-semibold);
+  color: var(--fc-color-text);
+}
+
+.fc-card__msg-preview {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--fc-color-text-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fc-card__msg-attachments {
+  margin: 4px 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--fc-color-text-soft);
+}

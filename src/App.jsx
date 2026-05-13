@@ -7,6 +7,8 @@ import {
   CardBody,
   CardFooter,
   ChildCard,
+  MessageCard,
+  NoticeCard,
 } from "@minilogg/cards";
 import { Dropdown } from "@minilogg/dropdowns";
 import { Modal } from "@minilogg/modals";
@@ -165,6 +167,51 @@ function Showcase() {
               status={{ label: "Hämtas 14:30", tone: "info" }}
               guardians={["Mikael Dahl", "Lisa Dahl"]}
             />
+          </div>
+        </section>
+
+        <section className="section">
+          <h2 className="section__title">MessageCard / NoticeCard</h2>
+          <p className="section__hint">
+            Kort för information mellan pedagog och vårdnadshavare – t.ex.
+            meddelanden, anslag och aviseringar.
+          </p>
+          <div className="stack-cards">
+            <MessageCard
+              sender={{ name: "Anna Lärare", role: "teacher" }}
+              recipient={{ name: "Per Persson", role: "guardian" }}
+              subject="Utvecklingssamtal v.24"
+              preview="Hej Per! Vill du boka tid för utvecklingssamtal nästa vecka? Jag har tider tisdag eftermiddag och torsdag förmiddag."
+              timestamp="09:42"
+              unread
+              attachments={1}
+              onClick={() => toast.info("Öppnar meddelande")}
+              actions={
+                <>
+                  <Button size="sm" variant="secondary">
+                    Markera läst
+                  </Button>
+                  <Button size="sm">Svara</Button>
+                </>
+              }
+            />
+            <MessageCard
+              sender={{ name: "Lisa Dahl", role: "guardian" }}
+              recipient={{ name: "Solrosen", role: "teacher" }}
+              subject="Doris är sjuk idag"
+              preview="Hej! Doris vaknade med feber så hon stannar hemma."
+              timestamp="07:15"
+            />
+            <NoticeCard
+              sender={{ name: "Förskolan Solrosen", role: "system" }}
+              subject="Stängt fredag den 7 juni – planeringsdag"
+              priority="high"
+              timestamp={new Date()}
+              attachments={2}
+            >
+              Förskolan håller stängt för planeringsdag. Behöver du
+              barnomsorg kontakta kommunens jourförskola.
+            </NoticeCard>
           </div>
         </section>
 

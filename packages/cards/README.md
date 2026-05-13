@@ -47,6 +47,8 @@ import { Button } from "@minilogg/buttons";
 | `CardFooter`    | Nedre sektion, ofta knappar eller metadata.                   |
 | `StatCard`      | Färdig nyckeltalsruta för dashboards.                         |
 | `ChildCard`     | Pedagogiskt kort för ett barn (namn, avdelning, status, avatar). |
+| `MessageCard`   | Meddelandekort för kommunikation pedagog ↔ vårdnadshavare.    |
+| `NoticeCard`    | Alias för `MessageCard` – passar anslag och aviseringar.      |
 
 Alla komponenter tar `children` och `className` och vidarebefordrar övriga props till det underliggande elementet.
 
@@ -141,6 +143,57 @@ etiketterna någon annanstans i UI:t.
   <CardBody>{message.preview}</CardBody>
 </Card>
 ```
+
+### MessageCard / NoticeCard
+
+Färdigt kort för information mellan pedagog och vårdnadshavare. Visar
+avsändare med rollmarkör (P/V/B/A/S), valfri mottagare, ämne,
+förhandsvisning, tidsstämpel, bilagor och prioritet. Använd `NoticeCard`
+när semantiken är ett anslag eller en avisering – det är ett alias för
+`MessageCard`.
+
+```jsx
+import { MessageCard, NoticeCard } from "@minilogg/cards";
+
+<MessageCard
+  sender={{ name: "Anna Lärare", role: "teacher" }}
+  recipient={{ name: "Per Persson", role: "guardian" }}
+  subject="Utvecklingssamtal"
+  preview="Hej Per! Vill du boka tid nästa vecka?"
+  timestamp="09:42"
+  unread
+  attachments={1}
+  onClick={() => openMessage(id)}
+/>
+
+<NoticeCard
+  sender={{ name: "Förskolan Solrosen", role: "system" }}
+  subject="Stängt fredag 7 juni"
+  priority="high"
+  timestamp={new Date()}
+>
+  Förskolan håller stängt för planeringsdag.
+</NoticeCard>
+```
+
+| Prop          | Typ                                                                                  | Beskrivning                                                                 |
+| ------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| `sender`      | `string \| { name, role?, avatar? }`                                                 | Avsändare. Roll ger en färgad initialmarkör.                                |
+| `recipient`   | `string \| { name, role? }`                                                          | Valfri mottagare (visas som "Till: …").                                     |
+| `subject`     | `ReactNode`                                                                          | Ämne/rubrik.                                                                |
+| `preview`     | `ReactNode`                                                                          | Förhandsvisning av meddelandet (max ca 3 rader). `children` fungerar också. |
+| `timestamp`   | `string \| Date`                                                                     | Tidsstämpel. `Date` formateras som `HH:MM`.                                 |
+| `unread`      | `boolean`                                                                            | Markerar olästa meddelanden med en blå punkt och fet avsändare.            |
+| `priority`    | `"normal" \| "high"`                                                                 | `"high"` ger "Viktigt"-badge och varningston.                                |
+| `tone`        | `"neutral" \| "info" \| "success" \| "warning" \| "danger"`                          | Överstyr automatisk accentfärg.                                             |
+| `attachments` | `number`                                                                             | Visar 📎 + räknare (`bilaga`/`bilagor`).                                    |
+| `actions`     | `ReactNode`                                                                          | Innehåll i footer, t.ex. svara-knapp.                                       |
+| `onClick`     | `(e) => void`                                                                        | Gör kortet klickbart (Enter/Space-stöd).                                    |
+| `selected`    | `boolean`                                                                            | Markerar kortet som valt.                                                   |
+
+Tillgängliga roller via `MESSAGE_ROLE_PRESETS`: `teacher` (P), `guardian`
+(V), `child` (B), `admin` (A), `system` (S). Du kan även skicka in en egen
+roll som ett objekt `{ label, short?, className? }`.
 
 ### Dashboard
 
