@@ -11,9 +11,9 @@
   --fc-meal-text: var(--fc-color-text, #1a1a1a);
   --fc-meal-text-soft: var(--fc-color-text-soft, #5e564a);
 
-  --fc-meal-good: #7bb892;
-  --fc-meal-good-bg: #e6f1ea;
-  --fc-meal-good-fg: #1f6f48;
+  --fc-meal-good: #04784e;
+  --fc-meal-good-bg: #e1efe8;
+  --fc-meal-good-fg: #03633f;
 
   --fc-meal-ok: #e6c46a;
   --fc-meal-ok-bg: #fbf1d6;
@@ -102,7 +102,7 @@
 
 .fc-meal-status__option:focus-visible {
   outline: none;
-  box-shadow: var(--fc-shadow-focus, 0 0 0 4px rgba(31, 111, 72, 0.22));
+  box-shadow: var(--fc-shadow-focus, 0 0 0 4px rgba(4, 120, 78, 0.22));
 }
 
 .fc-meal-status__icon {

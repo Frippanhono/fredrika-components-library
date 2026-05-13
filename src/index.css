@@ -30,13 +30,17 @@
   --fc-color-text-inverse: #ffffff;
 
   /* Semantic palette (solid / background / foreground) */
-  --fc-color-info: #1f6f48;
-  --fc-color-info-bg: #e4efe7;
-  --fc-color-info-fg: #185a3a;
+  --fc-color-info: #04784e;
+  --fc-color-info-bg: #e1efe8;
+  --fc-color-info-fg: #03633f;
 
-  --fc-color-success: #1f6f48;
-  --fc-color-success-bg: #e4efe7;
-  --fc-color-success-fg: #185a3a;
+  --fc-color-success: #04784e;
+  --fc-color-success-bg: #e1efe8;
+  --fc-color-success-fg: #03633f;
+
+  /* Accent/focus alias – håller komponenter med äldre fallbacks i synk */
+  --fc-color-accent: var(--fc-color-primary);
+  --fc-color-focus: var(--fc-color-primary);
 
   --fc-color-warning: #c97a1a;
   --fc-color-warning-bg: #fbe9ce;

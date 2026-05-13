@@ -40,10 +40,10 @@
   color: var(--fc-color-text-soft);
 }
 .fc-card__stat-delta--up {
-  color: var(--fc-color-success, #16a34a);
+  color: var(--fc-color-success, #04784e);
 }
 .fc-card__stat-delta--down {
-  color: var(--fc-color-danger, #dc2626);
+  color: var(--fc-color-danger, #c44545);
 }
 .fc-card__stat-delta--flat {
   color: var(--fc-color-text-soft);

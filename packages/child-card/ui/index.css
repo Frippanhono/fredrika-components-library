@@ -103,22 +103,22 @@
 }
 
 .fc-card__child-status--info {
-  background: color-mix(in srgb, var(--fc-color-info, #3b82f6) 12%, transparent);
-  color: var(--fc-color-info, #3b82f6);
-  border-color: color-mix(in srgb, var(--fc-color-info, #3b82f6) 35%, transparent);
+  background: color-mix(in srgb, var(--fc-color-info, #04784e) 12%, transparent);
+  color: var(--fc-color-info, #04784e);
+  border-color: color-mix(in srgb, var(--fc-color-info, #04784e) 35%, transparent);
 }
 .fc-card__child-status--success {
-  background: color-mix(in srgb, var(--fc-color-success, #16a34a) 14%, transparent);
-  color: var(--fc-color-success, #16a34a);
-  border-color: color-mix(in srgb, var(--fc-color-success, #16a34a) 35%, transparent);
+  background: color-mix(in srgb, var(--fc-color-success, #04784e) 14%, transparent);
+  color: var(--fc-color-success, #04784e);
+  border-color: color-mix(in srgb, var(--fc-color-success, #04784e) 35%, transparent);
 }
 .fc-card__child-status--warning {
-  background: color-mix(in srgb, var(--fc-color-warning, #d97706) 14%, transparent);
-  color: var(--fc-color-warning, #d97706);
-  border-color: color-mix(in srgb, var(--fc-color-warning, #d97706) 35%, transparent);
+  background: color-mix(in srgb, var(--fc-color-warning, #c97a1a) 14%, transparent);
+  color: var(--fc-color-warning, #c97a1a);
+  border-color: color-mix(in srgb, var(--fc-color-warning, #c97a1a) 35%, transparent);
 }
 .fc-card__child-status--danger {
-  background: color-mix(in srgb, var(--fc-color-danger, #dc2626) 14%, transparent);
-  color: var(--fc-color-danger, #dc2626);
-  border-color: color-mix(in srgb, var(--fc-color-danger, #dc2626) 35%, transparent);
+  background: color-mix(in srgb, var(--fc-color-danger, #c44545) 14%, transparent);
+  color: var(--fc-color-danger, #c44545);
+  border-color: color-mix(in srgb, var(--fc-color-danger, #c44545) 35%, transparent);
 }

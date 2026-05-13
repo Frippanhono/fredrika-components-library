@@ -6,7 +6,7 @@
 .fc-card--message-unread {
   background: color-mix(
     in srgb,
-    var(--fc-color-info, #3b82f6) 4%,
+    var(--fc-color-info, #04784e) 4%,
     var(--fc-color-surface)
   );
 }
@@ -15,7 +15,7 @@
   box-shadow:
     var(--fc-shadow-sm),
     inset 0 0 0 1px
-      color-mix(in srgb, var(--fc-color-warning, #d97706) 35%, transparent);
+      color-mix(in srgb, var(--fc-color-warning, #c97a1a) 35%, transparent);
 }
 
 .fc-card__msg-avatar {
@@ -72,7 +72,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--fc-color-info, #3b82f6);
+  background: var(--fc-color-info, #04784e);
   flex: 0 0 8px;
   display: inline-block;
 }
@@ -86,14 +86,14 @@
   font-weight: var(--fc-font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--fc-color-warning, #d97706);
+  color: var(--fc-color-warning, #c97a1a);
   background: color-mix(
     in srgb,
-    var(--fc-color-warning, #d97706) 14%,
+    var(--fc-color-warning, #c97a1a) 14%,
     transparent
   );
   border: 1px solid
-    color-mix(in srgb, var(--fc-color-warning, #d97706) 35%, transparent);
+    color-mix(in srgb, var(--fc-color-warning, #c97a1a) 35%, transparent);
 }
 
 .fc-card__msg-recipientline {

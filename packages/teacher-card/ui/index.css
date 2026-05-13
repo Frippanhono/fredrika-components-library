@@ -57,13 +57,13 @@
 }
 
 .fc-card__teacher-title--primary {
-  color: var(--fc-color-primary, #2563eb);
+  color: var(--fc-color-primary, #04784e);
 }
 .fc-card__teacher-title--info {
-  color: var(--fc-color-info, #3b82f6);
+  color: var(--fc-color-info, #04784e);
 }
 .fc-card__teacher-title--warning {
-  color: var(--fc-color-warning, #d97706);
+  color: var(--fc-color-warning, #c97a1a);
 }
 .fc-card__teacher-title--neutral {
   color: var(--fc-color-text-soft);
