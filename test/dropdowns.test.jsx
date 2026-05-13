@@ -86,4 +86,39 @@ describe("Dropdown", () => {
     await user.click(screen.getByRole("button", { name: "outside" }));
     expect(screen.queryByRole("menu")).not.toBeInTheDocument();
   });
+
+  it("supports controlled open + onOpenChange", async () => {
+    const user = userEvent.setup();
+    const onOpenChange = vi.fn();
+    const { rerender } = render(
+      <Dropdown label="A" items={items} open={false} onOpenChange={onOpenChange} />,
+    );
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /A/ }));
+    expect(onOpenChange).toHaveBeenCalledWith(true);
+    // Parent has not flipped the prop yet -> still closed.
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    rerender(
+      <Dropdown label="A" items={items} open={true} onOpenChange={onOpenChange} />,
+    );
+    expect(screen.getByRole("menu")).toBeInTheDocument();
+  });
+
+  it("disabled trigger cannot open the menu", async () => {
+    const user = userEvent.setup();
+    render(<Dropdown label="A" items={items} disabled />);
+    const trigger = screen.getByRole("button", { name: /A/ });
+    expect(trigger).toBeDisabled();
+    await user.click(trigger);
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+  });
+
+  it("typeahead jumps to matching item", async () => {
+    const user = userEvent.setup();
+    render(<Dropdown label="A" items={items} />);
+    screen.getByRole("button", { name: /A/ }).focus();
+    await user.keyboard("{ArrowDown}"); // open -> Edit
+    await user.keyboard("a"); // -> Archive
+    expect(screen.getByRole("menuitem", { name: "Archive" })).toHaveFocus();
+  });
 });
