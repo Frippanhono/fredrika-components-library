@@ -26,6 +26,7 @@ export default defineConfig({
       "@minilogg/weekly-schedule": pkg("weekly-schedule"),
       "@minilogg/stat-card": pkg("stat-card"),
       "@minilogg/child-card": pkg("child-card"),
+      "@minilogg/teacher-card": pkg("teacher-card"),
       "@minilogg/message-card": pkg("message-card"),
       "@minilogg/meal-status-selector": pkg("meal-status-selector"),
     },

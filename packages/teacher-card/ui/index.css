@@ -1,0 +1,95 @@
+.fc-card--teacher .fc-card__header {
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+/* TeacherCard krymper till sitt innehåll så flera kan ligga sida vid sida.
+   Konsumenten kan åsidosätta med t.ex. `width: 100%` vid behov. */
+.fc-card--teacher {
+  width: fit-content;
+  max-width: 100%;
+  min-width: 240px;
+}
+
+.fc-card__teacher-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--fc-color-surface-alt);
+  border: 1px solid var(--fc-color-border);
+  overflow: hidden;
+  flex: 0 0 56px;
+  color: var(--fc-color-text);
+  font-weight: var(--fc-font-weight-semibold);
+}
+
+.fc-card__teacher-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fc-card__teacher-avatar-initials {
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.fc-card__teacher-identity {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: 2px;
+}
+
+.fc-card__teacher-title {
+  font-size: 0.85rem;
+  font-weight: var(--fc-font-weight-semibold);
+  color: var(--fc-color-text-soft);
+  letter-spacing: 0.01em;
+  margin: 0 0 2px;
+}
+
+.fc-card__teacher-title--primary {
+  color: var(--fc-color-primary, #2563eb);
+}
+.fc-card__teacher-title--info {
+  color: var(--fc-color-info, #3b82f6);
+}
+.fc-card__teacher-title--warning {
+  color: var(--fc-color-warning, #d97706);
+}
+.fc-card__teacher-title--neutral {
+  color: var(--fc-color-text-soft);
+}
+
+.fc-card__teacher-nameline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.fc-card__teacher-name {
+  font-size: 1.4rem;
+  font-weight: var(--fc-font-weight-bold, 700);
+  letter-spacing: -0.01em;
+  color: var(--fc-color-text);
+  line-height: 1.15;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.fc-card__teacher-department {
+  font-size: 0.9rem;
+  color: var(--fc-color-text-soft);
+  margin-top: 2px;
+}
