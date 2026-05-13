@@ -150,6 +150,74 @@
   align-items: center;
 }
 
+/* Row layout – horisontellt kort med media till vänster och innehåll till höger.
+   Används t.ex. för "Senaste inlägg"-listor. */
+.fc-card--row {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.fc-card--row > .fc-card__media {
+  flex: 0 0 auto;
+  width: 140px;
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.fc-card--row > .fc-card__media img,
+.fc-card--row > .fc-card__media > * {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fc-card--row > .fc-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: var(--fc-space-4) var(--fc-space-5);
+  gap: var(--fc-space-3);
+  min-width: 0;
+}
+
+.fc-card--row .fc-card__title {
+  font-size: 1.1rem;
+  line-height: 1.3;
+  color: var(--fc-color-text);
+}
+
+.fc-card--row .fc-card__row-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fc-space-3);
+  font-size: 0.9rem;
+  color: var(--fc-color-text-soft);
+}
+
+.fc-card--row .fc-card__read-more {
+  font-weight: var(--fc-font-weight-semibold);
+  color: var(--fc-color-text);
+  text-decoration: none;
+}
+
+.fc-card--row .fc-card__read-more:hover,
+.fc-card--row .fc-card__read-more:focus-visible {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .fc-card--row {
+    flex-direction: column;
+  }
+  .fc-card--row > .fc-card__media {
+    width: 100%;
+    height: 160px;
+  }
+}
+
 /* Role badge – delad visuell markör som används av domänkort
    (t.ex. @minilogg/child-card, @minilogg/message-card). */
 .fc-card__role-badge {
