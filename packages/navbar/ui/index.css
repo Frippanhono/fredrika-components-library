@@ -1,18 +1,21 @@
+/* =========================================================================
+   Navbar – ikon-baserad navigering (mobil: fast botten / desktop: sticky topp)
+   ========================================================================= */
+
 .fc-navbar {
   width: 100%;
-  background: var(--fc-color-surface-translucent, rgba(255, 255, 255, 0.8));
-  backdrop-filter: saturate(180%) blur(12px);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  background: var(--fc-color-surface-alt, #fbf6ec);
   border-bottom: 1px solid var(--fc-color-border);
   position: sticky;
   top: 0;
   z-index: var(--fc-z-navbar);
+  font-family: var(--fc-font-family);
 }
 
 .fc-navbar__inner {
   display: flex;
   align-items: center;
-  gap: var(--fc-space-6);
+  gap: var(--fc-space-4);
   padding: var(--fc-space-3) var(--fc-space-5);
   max-width: 1200px;
   margin: 0 auto;
@@ -26,38 +29,113 @@
   letter-spacing: -0.015em;
 }
 
-.fc-navbar__links {
+.fc-navbar__items {
   display: flex;
-  gap: var(--fc-space-1);
   list-style: none;
   margin: 0;
   padding: 0;
   flex: 1;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--fc-space-2);
+}
+
+.fc-navbar__item {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  max-width: 8rem;
 }
 
 .fc-navbar__link {
-  display: inline-block;
-  padding: var(--fc-space-2) 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: var(--fc-space-2) var(--fc-space-2);
   border-radius: var(--fc-radius-md);
-  color: var(--fc-color-text-soft);
+  color: var(--fc-color-text);
   text-decoration: none;
   font-weight: var(--fc-font-weight-medium);
-  font-size: 0.92rem;
+  font-size: var(--fc-font-size-xs);
+  line-height: 1.15;
+  text-align: center;
+  width: 100%;
+  min-height: 56px;
   transition:
     background-color var(--fc-transition-fast),
     color var(--fc-transition-fast);
 }
 .fc-navbar__link:hover {
   background: var(--fc-color-surface-hover);
-  color: var(--fc-color-text);
 }
-.fc-navbar__link.is-active {
+.fc-navbar__item.is-active .fc-navbar__link {
   color: var(--fc-color-primary);
-  background: var(--fc-color-primary-soft);
 }
 .fc-navbar__link:focus-visible {
   outline: none;
   box-shadow: var(--fc-shadow-focus);
+}
+
+.fc-navbar__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--fc-color-text);
+}
+.fc-navbar__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.fc-navbar__item.is-active .fc-navbar__icon {
+  color: var(--fc-color-primary);
+}
+
+.fc-navbar__label {
+  display: block;
+  font-size: var(--fc-font-size-xs);
+  color: var(--fc-color-text);
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Featured item – framhävd avatar/cirkel i mitten */
+.fc-navbar__item.is-featured {
+  flex: 1 1 0;
+  align-self: flex-start;
+  /* I desktopvy hänger den framhävda länken nedanför de andra ikonerna
+     så att hela avataren är synlig under navbar:ens överkant. */
+  transform: translateY(14px);
+}
+.fc-navbar__item.is-featured .fc-navbar__link {
+  padding-top: 0;
+  gap: var(--fc-space-1);
+}
+.fc-navbar__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--fc-radius-pill);
+  overflow: hidden;
+  background: var(--fc-color-surface);
+  border: 3px solid var(--fc-color-surface);
+  box-shadow: var(--fc-shadow-sm);
+}
+.fc-navbar__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.fc-navbar__item.is-featured .fc-navbar__label {
+  font-weight: var(--fc-font-weight-semibold);
+  font-size: var(--fc-font-size-sm);
 }
 
 .fc-navbar__actions {
@@ -66,43 +144,45 @@
   align-items: center;
 }
 
-.fc-navbar__toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 22px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-.fc-navbar__toggle span {
-  display: block;
-  height: 2px;
-  background: var(--fc-color-text);
-  border-radius: 2px;
-}
-
+/* -------------------------------------------------------------------------
+   Mobil: fast längst ner i vyn
+   ------------------------------------------------------------------------- */
 @media (max-width: 720px) {
-  .fc-navbar__toggle {
-    display: flex;
-    order: 3;
+  .fc-navbar {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: none;
+    border-top: 1px solid var(--fc-color-border);
+    box-shadow: 0 -2px 12px rgba(60, 45, 20, 0.08);
+    padding-bottom: env(safe-area-inset-bottom, 0);
   }
-  .fc-navbar__links {
-    order: 4;
-    flex-basis: 100%;
-    flex-direction: column;
+  .fc-navbar__inner {
     gap: 0;
+    padding: var(--fc-space-2) var(--fc-space-2);
+  }
+  .fc-navbar__brand,
+  .fc-navbar__actions {
     display: none;
   }
-  .fc-navbar__links.is-open {
-    display: flex;
+  .fc-navbar__items {
+    width: 100%;
+    gap: 0;
   }
-  .fc-navbar__link {
-    display: block;
-    padding: 0.65rem var(--fc-space-2);
-    border-radius: 0;
-    border-bottom: 1px solid var(--fc-color-border);
+  .fc-navbar__item {
+    max-width: none;
+  }
+  /* På mobil låter vi avataren lyfta uppfrån navbar:en i stället för att
+     hänga nedåt (motsatt riktning mot desktop). */
+  .fc-navbar__item.is-featured {
+    align-self: center;
+    transform: none;
+  }
+  .fc-navbar__avatar {
+    width: 56px;
+    height: 56px;
+    margin-top: -18px;
   }
 }
