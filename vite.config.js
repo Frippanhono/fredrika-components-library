@@ -23,6 +23,7 @@ export default defineConfig({
       "@minilogg/navbar": pkg("navbar"),
       "@minilogg/inputs": pkg("inputs"),
       "@minilogg/badges": pkg("badges"),
+      "@minilogg/weekly-schedule": pkg("weekly-schedule"),
     },
   },
   test: {
