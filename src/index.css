@@ -5,12 +5,12 @@
    ========================================================================= */
 :root {
   /* Brand & Primary */
-  --fc-color-primary: #1f6f48;
-  --fc-color-primary-hover: #185a3a;
-  --fc-color-primary-active: #134a2f;
-  --fc-color-primary-soft: rgba(31, 111, 72, 0.1);
-  --fc-color-primary-ring: rgba(31, 111, 72, 0.22);
-  --fc-color-primary-gradient: linear-gradient(135deg, #2a8a5a 0%, #1f6f48 100%);
+  --fc-color-primary: #04784e;
+  --fc-color-primary-hover: #03633f;
+  --fc-color-primary-active: #024e32;
+  --fc-color-primary-soft: rgba(4, 120, 78, 0.1);
+  --fc-color-primary-ring: rgba(4, 120, 78, 0.22);
+  --fc-color-primary-gradient: linear-gradient(135deg, #0a9362 0%, #04784e 100%);
 
   /* Neutrals / Surfaces */
   --fc-color-bg: #f3e9d8;
