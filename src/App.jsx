@@ -2,10 +2,8 @@ import { useState } from "react";
 import { Button } from "@minilogg/buttons";
 import {
   Card,
-  CardHeader,
   CardTitle,
-  CardBody,
-  CardFooter,
+  CardMedia,
 } from "@minilogg/cards";
 import { ChildCard } from "@minilogg/child-card";
 import { TeacherCard } from "@minilogg/teacher-card";
@@ -82,6 +80,53 @@ const MoreIcon = () => (
 
 const CLARA_AVATAR =
   "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23f1c27d%22%2F%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2226%22%20r%3D%2212%22%20fill%3D%22%23ffd9a8%22%2F%3E%3Cpath%20d%3D%22M10%2064c2-12%2010-20%2022-20s20%208%2022%2020z%22%20fill%3D%22%23ffd9a8%22%2F%3E%3C%2Fsvg%3E";
+
+// SVG-placeholder: höstlöv med gröna stövlar (för "Senaste inlägg"-kortet).
+const FOREST_POST_IMAGE =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+          <stop offset="0%" stop-color="#d97706"/>
+          <stop offset="60%" stop-color="#92400e"/>
+          <stop offset="100%" stop-color="#451a03"/>
+        </radialGradient>
+      </defs>
+      <rect width="200" height="200" fill="url(#bg)"/>
+      <g fill="#f59e0b" opacity="0.85">
+        <ellipse cx="30" cy="40" rx="22" ry="12" transform="rotate(-25 30 40)"/>
+        <ellipse cx="170" cy="60" rx="20" ry="11" transform="rotate(20 170 60)"/>
+        <ellipse cx="50" cy="170" rx="24" ry="13" transform="rotate(15 50 170)"/>
+        <ellipse cx="160" cy="160" rx="22" ry="12" transform="rotate(-30 160 160)"/>
+      </g>
+      <g fill="#fbbf24" opacity="0.75">
+        <ellipse cx="90" cy="30" rx="18" ry="10" transform="rotate(10 90 30)"/>
+        <ellipse cx="20" cy="110" rx="20" ry="11" transform="rotate(-40 20 110)"/>
+        <ellipse cx="180" cy="120" rx="18" ry="10" transform="rotate(30 180 120)"/>
+      </g>
+      <g transform="translate(70 80)">
+        <path d="M5 10 Q5 0 15 0 L25 0 Q35 0 35 10 L35 60 Q35 75 25 75 L15 75 Q5 75 5 60 Z" fill="#365314"/>
+        <path d="M40 10 Q40 0 50 0 L60 0 Q70 0 70 10 L70 60 Q70 75 60 75 L50 75 Q40 75 40 60 Z" fill="#365314"/>
+        <ellipse cx="20" cy="78" rx="18" ry="6" fill="#1c1917"/>
+        <ellipse cx="55" cy="78" rx="18" ry="6" fill="#1c1917"/>
+      </g>
+    </svg>`,
+  );
+
+// SVG-placeholder: penslar/färgklickar för andra exempelinlägget.
+const PAINT_POST_IMAGE =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+      <rect width="200" height="200" fill="#fef3c7"/>
+      <circle cx="55" cy="70" r="32" fill="#ef4444" opacity="0.85"/>
+      <circle cx="140" cy="85" r="28" fill="#3b82f6" opacity="0.85"/>
+      <circle cx="95" cy="140" r="34" fill="#10b981" opacity="0.85"/>
+      <circle cx="160" cy="150" r="20" fill="#f59e0b" opacity="0.9"/>
+      <circle cx="35" cy="150" r="18" fill="#8b5cf6" opacity="0.85"/>
+    </svg>`,
+  );
 
 function Showcase() {
   const toast = useToast();
@@ -223,41 +268,57 @@ function Showcase() {
 
         <section id="cards" className="section">
           <h2 className="section__title">Cards</h2>
-          <div className="grid-cards">
-            <Card>
-              <CardHeader>
-                <CardTitle>Project Alpha</CardTitle>
-              </CardHeader>
-              <CardBody>
-                Status och översikt för projekt Alpha. Lorem ipsum dolor sit
-                amet.
-              </CardBody>
-              <CardFooter>
-                <Button size="sm" variant="secondary">
-                  Details
-                </Button>
-                <Button size="sm">Open</Button>
-              </CardFooter>
+          <p className="section__hint">
+            Generella kort som grupperar relaterat innehåll. Med modifieraren
+            <code> fc-card--row </code>kan ett kort visa en bild till vänster
+            och innehåll till höger – passar t.ex. för en "Senaste inlägg"-lista.
+          </p>
+
+          <h3 className="section__subtitle">Senaste inlägg</h3>
+          <div className="stack-cards">
+            <Card
+              className="fc-card--row"
+              onClick={() => toast.info("Öppnar inlägg")}
+            >
+              <CardMedia aria-hidden="true">
+                <img src={FOREST_POST_IMAGE} alt="" />
+              </CardMedia>
+              <div className="fc-card__content">
+                <CardTitle>
+                  Utflykt till skogen – vad vi hittade bland löven!
+                </CardTitle>
+                <div className="fc-card__row-footer">
+                  <span>23 april</span>
+                  <a
+                    href="#cards"
+                    className="fc-card__read-more"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Läs mer
+                  </a>
+                </div>
+              </div>
             </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Project Beta</CardTitle>
-              </CardHeader>
-              <CardBody>
-                Andra korta beskrivningen av ett projekt. Använder samma stil.
-              </CardBody>
-              <CardFooter>
-                <Button size="sm">Open</Button>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Project Gamma</CardTitle>
-              </CardHeader>
-              <CardBody>Tredje kortet med samma struktur.</CardBody>
-              <CardFooter>
-                <Button size="sm">Open</Button>
-              </CardFooter>
+
+            <Card className="fc-card--row">
+              <CardMedia aria-hidden="true">
+                <img src={PAINT_POST_IMAGE} alt="" />
+              </CardMedia>
+              <div className="fc-card__content">
+                <CardTitle>
+                  Måleri på avdelningen – färgglada konstverk
+                </CardTitle>
+                <div className="fc-card__row-footer">
+                  <span>18 april</span>
+                  <a
+                    href="#cards"
+                    className="fc-card__read-more"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Läs mer
+                  </a>
+                </div>
+              </div>
             </Card>
           </div>
         </section>
