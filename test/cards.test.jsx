@@ -13,6 +13,8 @@ import {
   StatCard,
   ChildCard,
   CHILD_STATUS_PRESETS,
+  ActivityCard,
+  ACTIVITY_TYPE_PRESETS,
 } from "@minilogg/cards";
 
 describe("Card primitives", () => {
@@ -228,5 +230,99 @@ describe("ChildCard", () => {
   it("omits the guardian list when none are provided", () => {
     render(<ChildCard name="Solo Solberg" />);
     expect(screen.queryByLabelText("Vårdnadshavare")).toBeNull();
+  });
+});
+
+describe("ActivityCard", () => {
+  it("renders activity, time and icon with tone-driven color coding", () => {
+    render(
+      <ActivityCard
+        data-testid="activity"
+        activity="Alma lämnad på förskolan"
+        time="08:14"
+        icon="📥"
+        tone="info"
+      />,
+    );
+    const el = screen.getByTestId("activity");
+    expect(el).toHaveClass(
+      "fc-card",
+      "fc-card--activity",
+      "fc-card--tone-info",
+    );
+    expect(
+      screen.getByRole("heading", { level: 4, name: "Alma lämnad på förskolan" }),
+    ).toHaveClass("fc-card__activity-title");
+    expect(screen.getByText("08:14")).toHaveClass("fc-card__meta");
+    const icon = screen.getByText("📥");
+    expect(icon).toHaveClass(
+      "fc-card__activity-icon",
+      "fc-card__activity-icon--info",
+    );
+  });
+
+  it("derives icon and tone from a preset `type`", () => {
+    render(
+      <ActivityCard
+        data-testid="activity"
+        type="incident"
+        activity="Snubblade på gården"
+        time="10:30"
+      />,
+    );
+    const el = screen.getByTestId("activity");
+    expect(el).toHaveClass("fc-card--tone-warning");
+    const icon = screen.getByText(ACTIVITY_TYPE_PRESETS.incident.icon);
+    expect(icon).toHaveClass("fc-card__activity-icon--warning");
+  });
+
+  it("lets explicit icon and tone override the preset", () => {
+    render(
+      <ActivityCard
+        data-testid="activity"
+        type="meal"
+        icon="🥗"
+        tone="danger"
+        activity="Allergi-incident vid lunch"
+      />,
+    );
+    expect(screen.getByTestId("activity")).toHaveClass("fc-card--tone-danger");
+    expect(screen.getByText("🥗")).toHaveClass(
+      "fc-card__activity-icon--danger",
+    );
+  });
+
+  it("renders an optional description", () => {
+    render(
+      <ActivityCard
+        activity="Sovstund"
+        description="Sov 12:30–13:45"
+        type="nap"
+      />,
+    );
+    expect(screen.getByText("Sov 12:30–13:45")).toHaveClass(
+      "fc-card__activity-description",
+    );
+  });
+
+  it("becomes interactive when onClick is provided", () => {
+    const onClick = vi.fn();
+    render(
+      <ActivityCard
+        data-testid="activity"
+        activity="Notering"
+        onClick={onClick}
+      />,
+    );
+    const el = screen.getByTestId("activity");
+    expect(el).toHaveClass("fc-card--interactive");
+    fireEvent.click(el);
+    fireEvent.keyDown(el, { key: "Enter" });
+    expect(onClick).toHaveBeenCalledTimes(2);
+  });
+
+  it("omits the icon slot when neither icon nor type is given", () => {
+    const { container } = render(<ActivityCard activity="Bara text" />);
+    expect(container.querySelector(".fc-card__activity-icon")).toBeNull();
   });
 });

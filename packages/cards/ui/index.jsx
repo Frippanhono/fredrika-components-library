@@ -414,3 +414,109 @@ export function ChildCard({
     </Card>
   );
 }
+
+/**
+ * Fördefinierade aktivitetstyper för `ActivityCard`.
+ *
+ * Varje preset innehåller en standardikon och en färgkodad ton. Kan användas
+ * direkt via propet `type` på `ActivityCard`, eller refereras härifrån om du
+ * behöver återanvända ikonen/etiketten någon annanstans.
+ */
+export const ACTIVITY_TYPE_PRESETS = {
+  dropoff: { icon: "📥", tone: "info", label: "Lämning" },
+  pickup: { icon: "📤", tone: "info", label: "Hämtning" },
+  meal: { icon: "🍽️", tone: "success", label: "Måltid" },
+  nap: { icon: "💤", tone: "neutral", label: "Vila" },
+  outdoor: { icon: "🌳", tone: "success", label: "Utevistelse" },
+  note: { icon: "📝", tone: "neutral", label: "Notering" },
+  message: { icon: "💬", tone: "info", label: "Meddelande" },
+  incident: { icon: "⚠️", tone: "warning", label: "Avvikelse" },
+  sick: { icon: "🤒", tone: "danger", label: "Sjuk" },
+};
+
+/**
+ * ActivityCard – feedrad för en aktivitet/händelse i förskolans loggflöde.
+ *
+ * Visar **aktivitet**, **tid**, **ikon** och färgkodning (`tone`) i ett
+ * kompakt kort som bygger på `Card`-primitiverna. Använd `type` för att få en
+ * fördefinierad ikon + ton, eller skicka in egna `icon` och `tone` för full
+ * kontroll.
+ *
+ * @param {object} props
+ * @param {React.ReactNode} props.activity - Aktivitetens beskrivning (rubrik).
+ * @param {React.ReactNode} [props.time] - Tidpunkt (visas som metadata).
+ * @param {React.ReactNode} [props.icon] - Ikon. Saknas den används ikonen från `type`.
+ * @param {"neutral"|"info"|"success"|"warning"|"danger"} [props.tone] - Färgkodning. Saknas den används tonen från `type`.
+ * @param {keyof typeof ACTIVITY_TYPE_PRESETS} [props.type] - Fördefinierad aktivitetstyp som ger ikon + ton.
+ * @param {React.ReactNode} [props.description] - Valfri detaljtext under rubriken.
+ * @param {React.ReactNode} [props.children] - Valfritt extra innehåll (renderas i `CardBody`).
+ * @param {React.ReactNode} [props.footer] - Valfri footer.
+ * @param {(e: React.MouseEvent|React.KeyboardEvent) => void} [props.onClick] - Gör kortet klickbart.
+ * @param {string} [props.className] - Extra CSS-klasser.
+ *
+ * @example
+ * <ActivityCard
+ *   type="dropoff"
+ *   activity="Alma lämnad på förskolan"
+ *   description="Lämnad av Pappa"
+ *   time="08:14"
+ * />
+ *
+ * @example
+ * <ActivityCard
+ *   icon="🌳"
+ *   tone="success"
+ *   activity="Utevistelse på gården"
+ *   time="10:30"
+ * />
+ */
+export function ActivityCard({
+  activity,
+  time,
+  icon,
+  tone,
+  type,
+  description,
+  children,
+  footer,
+  onClick,
+  className = "",
+  ...rest
+}) {
+  const preset = type ? ACTIVITY_TYPE_PRESETS[type] : null;
+  const resolvedIcon = icon ?? preset?.icon ?? null;
+  const resolvedTone = tone ?? preset?.tone ?? "neutral";
+
+  return (
+    <Card
+      tone={resolvedTone}
+      onClick={onClick}
+      className={`fc-card--activity ${className}`}
+      {...rest}
+    >
+      <CardHeader>
+        {resolvedIcon != null && (
+          <CardMedia
+            className={`fc-card__activity-icon fc-card__activity-icon--${resolvedTone}`}
+            aria-hidden="true"
+          >
+            {resolvedIcon}
+          </CardMedia>
+        )}
+        <div className="fc-card__activity-body">
+          <CardTitle as="h4" className="fc-card__activity-title">
+            {activity}
+          </CardTitle>
+          {description != null && (
+            <CardSubtitle className="fc-card__activity-description">
+              {description}
+            </CardSubtitle>
+          )}
+        </div>
+        {time != null && <CardMeta>{time}</CardMeta>}
+      </CardHeader>
+      {children != null && <CardBody>{children}</CardBody>}
+      {footer != null && <CardFooter>{footer}</CardFooter>}
+    </Card>
+  );
+}

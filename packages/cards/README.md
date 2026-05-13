@@ -47,6 +47,7 @@ import { Button } from "@minilogg/buttons";
 | `CardFooter`    | Nedre sektion, ofta knappar eller metadata.                   |
 | `StatCard`      | Färdig nyckeltalsruta för dashboards.                         |
 | `ChildCard`     | Pedagogiskt kort för ett barn (namn, avdelning, status, avatar). |
+| `ActivityCard`  | Feedrad för en aktivitet (aktivitet, tid, ikon, färgkodning).    |
 
 Alla komponenter tar `children` och `className` och vidarebefordrar övriga props till det underliggande elementet.
 
@@ -124,6 +125,44 @@ etiketterna någon annanstans i UI:t.
   </CardHeader>
 </Card>
 ```
+
+### ActivityCard
+
+Färdig feedrad för aktivitets-/händelseflödet. Visar **aktivitet**, **tid**,
+**ikon** och färgkodning (`tone`) i ett kompakt kort.
+
+```jsx
+import { ActivityCard } from "@minilogg/cards";
+
+<ActivityCard
+  type="dropoff"
+  activity="Alma lämnad på förskolan"
+  description="Lämnad av Pappa"
+  time="08:14"
+/>;
+
+<ActivityCard
+  icon="🌳"
+  tone="success"
+  activity="Utevistelse på gården"
+  time="10:00–11:00"
+/>;
+```
+
+| Prop          | Typ                                                                 | Beskrivning                                                                  |
+| ------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `activity`    | `ReactNode`                                                         | Aktivitetens beskrivning (rubrik, `<h4>`).                                   |
+| `time`        | `ReactNode`                                                         | Tidpunkt (visas som metadata).                                               |
+| `icon`        | `ReactNode`                                                         | Ikon. Saknas den används ikonen från `type`.                                 |
+| `tone`        | `"neutral" \| "info" \| "success" \| "warning" \| "danger"`         | Färgkodning. Saknas den används tonen från `type`.                           |
+| `type`        | `keyof ACTIVITY_TYPE_PRESETS`                                       | Fördefinierad aktivitetstyp som ger ikon + ton.                              |
+| `description` | `ReactNode`                                                         | Valfri detaljtext under rubriken.                                            |
+| `onClick`     | `(e) => void`                                                       | Gör kortet klickbart (Enter/Space hanteras automatiskt).                     |
+| `children`    | `ReactNode`                                                         | Valfritt extra innehåll (renderas i `CardBody`).                             |
+| `footer`      | `ReactNode`                                                         | Valfri footer.                                                               |
+
+Tillgängliga presets via `ACTIVITY_TYPE_PRESETS`: `dropoff`, `pickup`, `meal`,
+`nap`, `outdoor`, `note`, `message`, `incident`, `sick`.
 
 ### Meddelanden
 

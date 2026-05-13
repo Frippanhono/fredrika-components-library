@@ -7,6 +7,7 @@ import {
   CardBody,
   CardFooter,
   ChildCard,
+  ActivityCard,
 } from "@minilogg/cards";
 import { Dropdown } from "@minilogg/dropdowns";
 import { Modal } from "@minilogg/modals";
@@ -162,6 +163,46 @@ function Showcase() {
               department="Smörblomman"
               status={{ label: "Hämtas 14:30", tone: "info" }}
               guardians={["Mikael Dahl", "Lisa Dahl"]}
+            />
+          </div>
+        </section>
+
+        <section className="section">
+          <h2 className="section__title">ActivityCard</h2>
+          <p className="section__hint">
+            Feedrad för en aktivitet/händelse med aktivitet, tid, ikon och
+            färgkodning.
+          </p>
+          <div className="stack-cards">
+            <ActivityCard
+              type="dropoff"
+              activity="Alma lämnad på förskolan"
+              description="Lämnad av Pappa"
+              time="08:14"
+            />
+            <ActivityCard
+              type="meal"
+              activity="Lunch serverad"
+              description="Köttbullar och potatismos"
+              time="11:30"
+            />
+            <ActivityCard
+              type="outdoor"
+              activity="Utevistelse på gården"
+              time="10:00–11:00"
+            />
+            <ActivityCard
+              type="incident"
+              activity="Snubblade vid gungorna"
+              description="Ingen skada, fick en kram."
+              time="13:42"
+              onClick={() => toast.info("Öppnar avvikelse")}
+            />
+            <ActivityCard
+              icon="🎨"
+              tone="success"
+              activity="Målade höstlöv"
+              time="14:15"
             />
           </div>
         </section>
