@@ -107,21 +107,34 @@ function Showcase() {
       <main className="app__main">
         <header className="app__hero">
           <h1>MiniLogg Components Library</h1>
-          <p>
-            En samling React-komponenter: <Badge variant="info">buttons</Badge>{" "}
-            <Badge variant="info">cards</Badge>{" "}
-            <Badge variant="info">dropdowns</Badge>{" "}
-            <Badge variant="info">modals</Badge>{" "}
-            <Badge variant="info">tabs</Badge>{" "}
-            <Badge variant="info">toasts</Badge>{" "}
-            <Badge variant="success">navbar</Badge>{" "}
-            <Badge variant="success">inputs</Badge>{" "}
-            <Badge variant="success">badges</Badge>{" "}
-            <Badge variant="success">weekly-schedule</Badge>
-          </p>
+          <nav className="app__hero-toc" aria-label="Komponenter">
+            <span className="app__hero-intro">
+              En samling React-komponenter:
+            </span>
+            {[
+              { href: "#navbar", label: "navbar", variant: "success" },
+              { href: "#components", label: "buttons", variant: "info" },
+              { href: "#meal-status", label: "meal-status-selector", variant: "success" },
+              { href: "#badges", label: "badges", variant: "success" },
+              { href: "#cards", label: "cards", variant: "info" },
+              { href: "#child-card", label: "child-card", variant: "success" },
+              { href: "#teacher-card", label: "teacher-card", variant: "success" },
+              { href: "#message-card", label: "message-card", variant: "success" },
+              { href: "#dropdown-tabs", label: "dropdowns", variant: "info" },
+              { href: "#dropdown-tabs", label: "tabs", variant: "info" },
+              { href: "#weekly-schedule", label: "weekly-schedule", variant: "success" },
+              { href: "#forms", label: "inputs", variant: "success" },
+              { href: "#feedback", label: "modals", variant: "info" },
+              { href: "#feedback", label: "toasts", variant: "info" },
+            ].map((item) => (
+              <a key={item.label} href={item.href} className="app__hero-toc-link">
+                <Badge variant={item.variant}>{item.label}</Badge>
+              </a>
+            ))}
+          </nav>
         </header>
 
-        <section className="section">
+        <section id="navbar" className="section">
           <h2 className="section__title">Navbar</h2>
           <p className="section__hint">
             Navigeringsmeny som visas högst upp på sidan i desktop och fast
@@ -183,7 +196,7 @@ function Showcase() {
           </div>
         </section>
 
-        <section className="section">
+        <section id="meal-status" className="section">
           <h2 className="section__title">Meal Status Selector</h2>
           <p className="section__hint">
             Horisontell väljare för att rapportera hur en måltid gick. Stora
@@ -197,7 +210,7 @@ function Showcase() {
           </div>
         </section>
 
-        <section className="section">
+        <section id="badges" className="section">
           <h2 className="section__title">Badges</h2>
           <div className="row">
             <Badge>Neutral</Badge>
@@ -208,7 +221,7 @@ function Showcase() {
           </div>
         </section>
 
-        <section className="section">
+        <section id="cards" className="section">
           <h2 className="section__title">Cards</h2>
           <div className="grid-cards">
             <Card>
@@ -249,7 +262,7 @@ function Showcase() {
           </div>
         </section>
 
-        <section className="section">
+        <section id="child-card" className="section">
           <h2 className="section__title">ChildCard</h2>
           <p className="section__hint">
             Pedagogiskt kort för att presentera ett barn med namn, avdelning,
@@ -284,7 +297,7 @@ function Showcase() {
           </div>
         </section>
 
-        <section className="section">
+        <section id="teacher-card" className="section">
           <h2 className="section__title">TeacherCard</h2>
           <p className="section__hint">
             Kort för personal på en avdelning – visar titel, namn och
@@ -316,7 +329,7 @@ function Showcase() {
           </div>
         </section>
 
-        <section className="section">
+        <section id="message-card" className="section">
           <h2 className="section__title">MessageCard / NoticeCard</h2>
           <p className="section__hint">
             Kort för information mellan pedagog och vårdnadshavare – t.ex.
@@ -361,7 +374,7 @@ function Showcase() {
           </div>
         </section>
 
-        <section className="section">
+        <section id="dropdown-tabs" className="section">
           <h2 className="section__title">Dropdown & Tabs</h2>
           <div className="row">
             <Dropdown
@@ -492,7 +505,7 @@ function Showcase() {
           />
         </section>
 
-        <section className="section">
+        <section id="weekly-schedule" className="section">
           <h2 className="section__title">WeeklySchedule</h2>
           <p className="section__hint">
             Enkel veckovy med kort, tider och responsiv layout. Visar mån–fre
