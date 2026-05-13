@@ -31,6 +31,11 @@
   border-color: var(--fc-color-primary);
   box-shadow: var(--fc-shadow-focus);
 }
+.fc-dropdown__trigger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
 
 .fc-dropdown__caret {
   transition: transform var(--fc-transition-fast);
@@ -78,9 +83,12 @@
     background-color var(--fc-transition-fast),
     color var(--fc-transition-fast);
 }
-.fc-dropdown__item:hover:not(:disabled) {
+.fc-dropdown__item:hover:not(:disabled),
+.fc-dropdown__item[data-active="true"]:not(:disabled),
+.fc-dropdown__item:focus-visible:not(:disabled) {
   background: var(--fc-color-primary-soft);
   color: var(--fc-color-primary);
+  outline: none;
 }
 .fc-dropdown__item:disabled {
   opacity: 0.5;
