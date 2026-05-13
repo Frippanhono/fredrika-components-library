@@ -21,7 +21,15 @@ import { WeeklySchedule } from "@minilogg/weekly-schedule";
 import "./App.css";
 
 const AbsenceIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
     <line x1="18" y1="3" x2="18" y2="9" />
     <line x1="15" y1="6" x2="21" y2="6" />
@@ -29,7 +37,15 @@ const AbsenceIcon = () => (
 );
 
 const CheckInOutIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <rect x="3" y="4" width="18" height="16" rx="2" />
     <line x1="3" y1="9" x2="21" y2="9" />
     <polyline points="9 14 11 16 15 12" />
@@ -37,7 +53,15 @@ const CheckInOutIcon = () => (
 );
 
 const ContactsIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <rect x="4" y="3" width="16" height="18" rx="2" />
     <circle cx="12" cy="10" r="3" />
     <path d="M7 18c1-2.5 3-4 5-4s4 1.5 5 4" />
@@ -79,25 +103,6 @@ function Showcase() {
 
   return (
     <div className="app">
-      <Navbar
-        brand="MiniLogg UI"
-        links={navLinks}
-        activeHref={section}
-        onNavigate={(link) => {
-          setSection(link.href);
-          toast.info(`Öppnar ${typeof link.label === "string" ? link.label : "vy"}`);
-        }}
-        actions={
-          <Button
-            size="sm"
-            variant="primary"
-            onClick={() => toast.success("Hej!")}
-          >
-            Get started
-          </Button>
-        }
-      />
-
       <main className="app__main">
         <header className="app__hero">
           <h1>MiniLogg Components Library</h1>
@@ -114,6 +119,52 @@ function Showcase() {
             <Badge variant="success">weekly-schedule</Badge>
           </p>
         </header>
+
+        <section className="section">
+          <h2 className="section__title">Navbar</h2>
+          <p className="section__hint">
+            Navigeringsmeny som visas högst upp på sidan i desktop och fast
+            längst ner i mobilvy. Stödjer ikoner, avatarer och en markerad
+            aktiv länk.
+          </p>
+
+          <h3 className="section__subtitle">Desktopvy</h3>
+          <Navbar
+            links={navLinks}
+            activeHref={section}
+            onNavigate={(link) => {
+              setSection(link.href);
+              toast.info(
+                `Öppnar ${typeof link.label === "string" ? link.label : "vy"}`,
+              );
+            }}
+          />
+
+          <h3 className="section__subtitle">Mobilvy</h3>
+          <div className="phone-frame" aria-label="Förhandsvisning i mobilvy">
+            <div className="phone-frame__notch" aria-hidden="true" />
+            <div className="phone-frame__screen">
+              <div className="phone-frame__content">
+                <p className="phone-frame__placeholder">
+                  Innehåll i appen visas här. Navigeringen är fast längst ner
+                  så den alltid är inom tummens räckhåll.
+                </p>
+              </div>
+              <div className="phone-frame__navbar">
+                <Navbar
+                  links={navLinks}
+                  activeHref={section}
+                  onNavigate={(link) => {
+                    setSection(link.href);
+                    toast.info(
+                      `Öppnar ${typeof link.label === "string" ? link.label : "vy"}`,
+                    );
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section id="components" className="section">
           <h2 className="section__title">Buttons</h2>
@@ -257,8 +308,8 @@ function Showcase() {
               timestamp={new Date()}
               attachments={2}
             >
-              Förskolan håller stängt för planeringsdag. Behöver du
-              barnomsorg kontakta kommunens jourförskola.
+              Förskolan håller stängt för planeringsdag. Behöver du barnomsorg
+              kontakta kommunens jourförskola.
             </NoticeCard>
           </div>
         </section>
@@ -319,15 +370,15 @@ function Showcase() {
                       <Badge variant="info">08:30</Badge> Samling och morgonsång
                     </li>
                     <li>
-                      <Badge variant="success">09:15</Badge> Utflykt till
-                      skogen – tema "Höstens färger"
+                      <Badge variant="success">09:15</Badge> Utflykt till skogen
+                      – tema "Höstens färger"
                     </li>
                     <li>
                       <Badge variant="info">11:30</Badge> Lunch och vila
                     </li>
                     <li>
-                      <Badge variant="warning">14:00</Badge> Skapande verkstad
-                      – kom ihåg förkläden
+                      <Badge variant="warning">14:00</Badge> Skapande verkstad –
+                      kom ihåg förkläden
                     </li>
                   </ul>
                 ),
@@ -382,11 +433,11 @@ function Showcase() {
                 icon: "⚙️",
                 content: (
                   <div className="form-grid">
-                    <Input label="Förskola" defaultValue="Lilla Ekens förskola" />
                     <Input
-                      label="Kontakt"
-                      defaultValue="rektor@lillaeken.se"
+                      label="Förskola"
+                      defaultValue="Lilla Ekens förskola"
                     />
+                    <Input label="Kontakt" defaultValue="rektor@lillaeken.se" />
                   </div>
                 ),
               },

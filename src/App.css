@@ -74,6 +74,140 @@
   font-size: 0.9rem;
 }
 
+.section__subtitle {
+  margin: var(--fc-space-2) 0 0;
+  font-size: 0.85rem;
+  font-weight: var(--fc-font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fc-color-text-soft);
+}
+
+/* -------------------------------------------------------------------------
+   Phone frame – förhandsvisning av mobilvyer i en desktop-layout
+   ------------------------------------------------------------------------- */
+.phone-frame {
+  width: 380px;
+  max-width: 100%;
+  height: 640px;
+  margin: 0 auto;
+  background: #1a1410;
+  border-radius: 38px;
+  padding: 12px;
+  box-shadow:
+    0 20px 40px rgba(60, 45, 20, 0.25),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+.phone-frame__notch {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 22px;
+  background: #1a1410;
+  border-radius: 0 0 14px 14px;
+  z-index: 2;
+}
+.phone-frame__screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--fc-color-bg, #fff);
+  border-radius: 28px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.phone-frame__content {
+  flex: 1;
+  padding: 48px var(--fc-space-4) var(--fc-space-4);
+  overflow: auto;
+}
+.phone-frame__placeholder {
+  margin: 0;
+  color: var(--fc-color-text-soft);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.phone-frame__navbar {
+  position: relative;
+  flex-shrink: 0;
+}
+/* Tvinga mobilvarianten av Navbar oavsett viewport-bredd, så förhandsvisningen
+   matchar hur den ser ut på en faktisk mobil. */
+.phone-frame__navbar .fc-navbar {
+  position: relative;
+  top: auto;
+  bottom: 0;
+  border-bottom: none;
+  border-top: 1px solid var(--fc-color-border);
+  box-shadow: 0 -2px 12px rgba(60, 45, 20, 0.08);
+}
+.phone-frame__navbar .fc-navbar__inner {
+  gap: 0;
+  padding: var(--fc-space-1);
+}
+.phone-frame__navbar .fc-navbar__brand,
+.phone-frame__navbar .fc-navbar__actions {
+  display: none;
+}
+.phone-frame__navbar .fc-navbar__items {
+  width: 100%;
+  gap: 0;
+  align-items: stretch;
+}
+.phone-frame__navbar .fc-navbar__item {
+  max-width: none;
+  min-width: 0;
+}
+.phone-frame__navbar .fc-navbar__link {
+  padding: var(--fc-space-1) 2px;
+  gap: 0.25rem;
+  justify-content: flex-start;
+}
+.phone-frame__navbar .fc-navbar__icon {
+  width: 24px;
+  height: 24px;
+}
+.phone-frame__navbar .fc-navbar__label {
+  font-size: 0.7rem;
+  line-height: 1.15;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+.phone-frame__navbar .fc-navbar__item.is-featured {
+  align-self: flex-start;
+  transform: none;
+}
+.phone-frame__navbar .fc-navbar__item.is-featured .fc-navbar__link {
+  padding-top: var(--fc-space-1);
+}
+.phone-frame__navbar .fc-navbar__avatar {
+  width: 24px;
+  height: 24px;
+  margin-top: 0;
+  overflow: visible;
+  position: relative;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+.phone-frame__navbar .fc-navbar__avatar img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: var(--fc-radius-pill);
+  border: 3px solid var(--fc-color-surface);
+  box-shadow: var(--fc-shadow-sm);
+  object-fit: cover;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
