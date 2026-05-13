@@ -6,6 +6,7 @@ import {
   CardTitle,
   CardBody,
   CardFooter,
+  ChildCard,
 } from "@minilogg/cards";
 import { Dropdown } from "@minilogg/dropdowns";
 import { Modal } from "@minilogg/modals";
@@ -127,6 +128,41 @@ function Showcase() {
                 <Button size="sm">Open</Button>
               </CardFooter>
             </Card>
+          </div>
+        </section>
+
+        <section className="section">
+          <h2 className="section__title">ChildCard</h2>
+          <p className="section__hint">
+            Pedagogiskt kort för att presentera ett barn med namn, avdelning,
+            status och avatar.
+          </p>
+          <div className="stack-cards">
+            <ChildCard
+              name="Alma Andersson"
+              department="Solrosen"
+              status="present"
+              guardians={["Anja Andersson", "Per Andersson"]}
+              onClick={() => toast.info("Öppnar Alma")}
+            />
+            <ChildCard
+              name="Adam Persson"
+              department="Solrosen"
+              status="present"
+              guardians={["Anja Persson", "Peter Persson"]}
+            />
+            <ChildCard
+              name="Cleo Cederlund"
+              department="Maskrosen"
+              status="leave"
+              guardians={["Sara Cederlund"]}
+            />
+            <ChildCard
+              name="Doris Dahl"
+              department="Smörblomman"
+              status={{ label: "Hämtas 14:30", tone: "info" }}
+              guardians={["Mikael Dahl", "Lisa Dahl"]}
+            />
           </div>
         </section>
 
