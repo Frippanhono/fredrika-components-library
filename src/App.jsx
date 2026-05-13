@@ -8,6 +8,7 @@ import {
   CardFooter,
 } from "@minilogg/cards";
 import { ChildCard } from "@minilogg/child-card";
+import { TeacherCard } from "@minilogg/teacher-card";
 import { MessageCard, NoticeCard } from "@minilogg/message-card";
 import { Dropdown } from "@minilogg/dropdowns";
 import { Modal } from "@minilogg/modals";
@@ -279,6 +280,38 @@ function Showcase() {
               department="Smörblomman"
               status={{ label: "Hämtas 14:30", tone: "info" }}
               guardians={["Mikael Dahl", "Lisa Dahl"]}
+            />
+          </div>
+        </section>
+
+        <section className="section">
+          <h2 className="section__title">TeacherCard</h2>
+          <p className="section__hint">
+            Kort för personal på en avdelning – visar titel, namn och
+            avdelning.
+          </p>
+          <h3 className="section__subtitle">Personal på avdelningen</h3>
+          <div className="row-cards">
+            <TeacherCard
+              name="Anja Jansson"
+              title="forskollarare"
+              department="Solrosen"
+              onClick={() => toast.info("Öppnar Anja")}
+            />
+            <TeacherCard
+              name="Tove Karlsson"
+              title="forskollarare"
+              department="Solrosen"
+            />
+            <TeacherCard
+              name="Lena Johansson"
+              title="barnskotare"
+              department="Solrosen"
+            />
+            <TeacherCard
+              name="Sven Sköld"
+              title={{ label: "Vikarie v.24", tone: "warning" }}
+              department="Maskrosen"
             />
           </div>
         </section>
