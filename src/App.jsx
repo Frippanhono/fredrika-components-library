@@ -6,10 +6,9 @@ import {
   CardTitle,
   CardBody,
   CardFooter,
-  ChildCard,
-  MessageCard,
-  NoticeCard,
 } from "@minilogg/cards";
+import { ChildCard } from "@minilogg/child-card";
+import { MessageCard, NoticeCard } from "@minilogg/message-card";
 import { Dropdown } from "@minilogg/dropdowns";
 import { Modal } from "@minilogg/modals";
 import { Tabs } from "@minilogg/tabs";

@@ -24,6 +24,9 @@ export default defineConfig({
       "@minilogg/inputs": pkg("inputs"),
       "@minilogg/badges": pkg("badges"),
       "@minilogg/weekly-schedule": pkg("weekly-schedule"),
+      "@minilogg/stat-card": pkg("stat-card"),
+      "@minilogg/child-card": pkg("child-card"),
+      "@minilogg/message-card": pkg("message-card"),
     },
   },
   test: {

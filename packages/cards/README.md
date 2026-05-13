@@ -1,6 +1,7 @@
 # @minilogg/cards
 
-Kortkomponenter för att gruppera relaterat innehåll.
+Kortprimitiver för att gruppera relaterat innehåll. Domänspecifika kort
+(`StatCard`, `ChildCard`, `MessageCard`) ligger i egna paket och bygger ovanpå dessa.
 
 ## Användning
 
@@ -15,7 +16,6 @@ import {
   CardActions,
   CardBody,
   CardFooter,
-  StatCard,
 } from "@minilogg/cards";
 import { Button } from "@minilogg/buttons";
 
@@ -23,32 +23,27 @@ import { Button } from "@minilogg/buttons";
   <CardHeader>
     <CardTitle>Profil</CardTitle>
   </CardHeader>
-  <CardBody>
-    Namn, e-post och inställningar.
-  </CardBody>
+  <CardBody>Namn, e-post och inställningar.</CardBody>
   <CardFooter>
     <Button>Redigera</Button>
   </CardFooter>
-</Card>
+</Card>;
 ```
 
 ## Komponenter
 
-| Komponent       | Beskrivning                                                   |
-| --------------- | ------------------------------------------------------------- |
+| Komponent       | Beskrivning                                                            |
+| --------------- | ---------------------------------------------------------------------- |
 | `Card`          | Yttre container. Stödjer `variant`, `tone`, `interactive`, `selected`. |
-| `CardHeader`    | Övre sektion (rubrik, media, meta, åtgärder).                 |
-| `CardTitle`     | Semantisk rubrik (`<h3>` som default, byts med `as`).         |
-| `CardSubtitle`  | Sekundär etikett under rubriken.                              |
-| `CardMedia`     | Plats för avatar, ikon eller bild.                            |
-| `CardMeta`      | Diskret metadata, t.ex. tidsstämpel.                          |
-| `CardActions`   | Grupp av knappar/länkar.                                      |
-| `CardBody`      | Huvudinnehåll.                                                |
-| `CardFooter`    | Nedre sektion, ofta knappar eller metadata.                   |
-| `StatCard`      | Färdig nyckeltalsruta för dashboards.                         |
-| `ChildCard`     | Pedagogiskt kort för ett barn (namn, avdelning, status, avatar). |
-| `MessageCard`   | Meddelandekort för kommunikation pedagog ↔ vårdnadshavare.    |
-| `NoticeCard`    | Alias för `MessageCard` – passar anslag och aviseringar.      |
+| `CardHeader`    | Övre sektion (rubrik, media, meta, åtgärder).                          |
+| `CardTitle`     | Semantisk rubrik (`<h3>` som default, byts med `as`).                  |
+| `CardSubtitle`  | Sekundär etikett under rubriken.                                       |
+| `CardMedia`     | Plats för avatar, ikon eller bild.                                     |
+| `CardMeta`      | Diskret metadata, t.ex. tidsstämpel.                                   |
+| `CardActions`   | Grupp av knappar/länkar.                                               |
+| `CardBody`      | Huvudinnehåll.                                                         |
+| `CardFooter`    | Nedre sektion, ofta knappar eller metadata.                            |
+| `getInitials`   | Helper som returnerar 1–2 versaler från ett namn.                      |
 
 Alla komponenter tar `children` och `className` och vidarebefordrar övriga props till det underliggande elementet.
 
@@ -63,154 +58,17 @@ Alla komponenter tar `children` och `className` och vidarebefordrar övriga prop
 | `as`          | `keyof JSX.IntrinsicElements`                                    | `"div"`     | Underliggande element.                     |
 | `onClick`     | `(e) => void`                                                    | –           | Aktiverar tangentbordsstöd (Enter/Space).  |
 
-## Återanvändning
+## Domänkort
 
-### Barnkort
+Färdiga kort som bygger på primitiverna i det här paketet finns som egna paket:
 
-```jsx
-<Card interactive onClick={() => openChild(child.id)}>
-  <CardHeader>
-    <CardMedia><Avatar name={child.name} /></CardMedia>
-    <div>
-      <CardTitle>{child.name}</CardTitle>
-      <CardSubtitle>{child.age} år · {child.group}</CardSubtitle>
-    </div>
-    <CardActions><Badge variant="success">Närvarande</Badge></CardActions>
-  </CardHeader>
-</Card>
-```
+- [`@minilogg/stat-card`](../stat-card) – `StatCard`, nyckeltal för dashboards.
+- [`@minilogg/child-card`](../child-card) – `ChildCard` med status, vårdnadshavare och avatar.
+- [`@minilogg/message-card`](../message-card) – `MessageCard` / `NoticeCard` för meddelanden och aviseringar.
 
-### ChildCard
+## Delad design
 
-Färdigt, pedagogiskt kort för ett barn. Bygger ovanpå `Card` och tar de
-vanligaste fälten som direkta props.
-
-```jsx
-import { ChildCard } from "@minilogg/cards";
-
-<ChildCard
-  name="Alma Andersson"
-  department="Solrosen"
-  status="present"
-  avatar="/avatars/alma.jpg"
-  onClick={() => openChild("alma")}
-/>;
-```
-
-| Prop          | Typ                                                                                  | Beskrivning                                                                 |
-| ------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
-| `name`        | `string`                                                                             | Barnets namn (rubrik och underlag för initialer).                          |
-| `department`  | `ReactNode`                                                                          | Avdelning eller grupp (underrubrik).                                       |
-| `status`      | `"present" \| "absent" \| "sick" \| "leave" \| "arriving" \| "pickedup" \| { label, tone }` | Närvarostatus. Sträng matchar en preset, objekt ger egen etikett.   |
-| `avatar`      | `ReactNode \| string`                                                                | Bild-URL eller ReactNode. Saknas avatar visas automatiska initialer.       |
-| `avatarAlt`   | `string`                                                                             | Alternativtext för bild-avatar (default = namnet).                         |
-| `onClick`     | `(e) => void`                                                                        | Gör kortet klickbart (Enter/Space hanteras automatiskt).                   |
-| `selected`    | `boolean`                                                                            | Markera som valt.                                                          |
-| `footer`      | `ReactNode`                                                                          | Valfri footer, t.ex. knappar.                                              |
-| `children`    | `ReactNode`                                                                          | Valfritt extra innehåll (renderas i `CardBody`).                           |
-
-Statuspresets exporteras som `CHILD_STATUS_PRESETS` om du vill återanvända
-etiketterna någon annanstans i UI:t.
-
-### Aktivitet
-
-```jsx
-<Card variant="ghost" tone="info">
-  <CardHeader>
-    <CardMedia>📌</CardMedia>
-    <div>
-      <CardTitle as="h4">Lämnade på förskolan</CardTitle>
-      <CardSubtitle>Alma av Pappa</CardSubtitle>
-    </div>
-    <CardMeta>08:14</CardMeta>
-  </CardHeader>
-</Card>
-```
-
-### Meddelanden
-
-```jsx
-<Card
-  interactive
-  tone={message.unread ? "info" : "neutral"}
-  selected={message.id === activeId}
-  onClick={() => open(message.id)}
->
-  <CardHeader>
-    <CardTitle>{message.from}</CardTitle>
-    <CardMeta>{message.time}</CardMeta>
-  </CardHeader>
-  <CardBody>{message.preview}</CardBody>
-</Card>
-```
-
-### MessageCard / NoticeCard
-
-Färdigt kort för information mellan pedagog och vårdnadshavare. Visar
-avsändare med rollmarkör (P/V/B/A/S), valfri mottagare, ämne,
-förhandsvisning, tidsstämpel, bilagor och prioritet. Använd `NoticeCard`
-när semantiken är ett anslag eller en avisering – det är ett alias för
-`MessageCard`.
-
-```jsx
-import { MessageCard, NoticeCard } from "@minilogg/cards";
-
-<MessageCard
-  sender={{ name: "Anna Lärare", role: "teacher" }}
-  recipient={{ name: "Per Persson", role: "guardian" }}
-  subject="Utvecklingssamtal"
-  preview="Hej Per! Vill du boka tid nästa vecka?"
-  timestamp="09:42"
-  unread
-  attachments={1}
-  onClick={() => openMessage(id)}
-/>
-
-<NoticeCard
-  sender={{ name: "Förskolan Solrosen", role: "system" }}
-  subject="Stängt fredag 7 juni"
-  priority="high"
-  timestamp={new Date()}
->
-  Förskolan håller stängt för planeringsdag.
-</NoticeCard>
-```
-
-| Prop          | Typ                                                                                  | Beskrivning                                                                 |
-| ------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
-| `sender`      | `string \| { name, role?, avatar? }`                                                 | Avsändare. Roll ger en färgad initialmarkör.                                |
-| `recipient`   | `string \| { name, role? }`                                                          | Valfri mottagare (visas som "Till: …").                                     |
-| `subject`     | `ReactNode`                                                                          | Ämne/rubrik.                                                                |
-| `preview`     | `ReactNode`                                                                          | Förhandsvisning av meddelandet (max ca 3 rader). `children` fungerar också. |
-| `timestamp`   | `string \| Date`                                                                     | Tidsstämpel. `Date` formateras som `HH:MM`.                                 |
-| `unread`      | `boolean`                                                                            | Markerar olästa meddelanden med en blå punkt och fet avsändare.            |
-| `priority`    | `"normal" \| "high"`                                                                 | `"high"` ger "Viktigt"-badge och varningston.                                |
-| `tone`        | `"neutral" \| "info" \| "success" \| "warning" \| "danger"`                          | Överstyr automatisk accentfärg.                                             |
-| `attachments` | `number`                                                                             | Visar 📎 + räknare (`bilaga`/`bilagor`).                                    |
-| `actions`     | `ReactNode`                                                                          | Innehåll i footer, t.ex. svara-knapp.                                       |
-| `onClick`     | `(e) => void`                                                                        | Gör kortet klickbart (Enter/Space-stöd).                                    |
-| `selected`    | `boolean`                                                                            | Markerar kortet som valt.                                                   |
-
-Tillgängliga roller via `MESSAGE_ROLE_PRESETS`: `teacher` (P), `guardian`
-(V), `child` (B), `admin` (A), `system` (S). Du kan även skicka in en egen
-roll som ett objekt `{ label, short?, className? }`.
-
-### Dashboard
-
-```jsx
-<div className="grid-cards">
-  <StatCard label="Aktiva barn" value={128} delta="+4" trend="up" tone="success" />
-  <StatCard label="Meddelanden" value={12} delta="3 olästa" tone="info" />
-  <StatCard label="Avvikelser" value={2} delta="−1" trend="down" tone="warning" />
-</div>
-```
-
-## Feedback
-
-Vi förbättrar `Card`-familjen löpande baserat på input från användare och team.
-
-- 💬 [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,cards&title=%5BFeedback%5D+cards%3A+)
-- 🐞 [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,cards&title=%5BBug%5D+cards%3A+)
-- ✨ [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,cards&title=%5BFeature%5D+cards%3A+)
-
-Se alla pågående diskussioner under labeln [`cards`](../../issues?q=is%3Aissue+label%3Acards).
+`Card` exponerar även basklassen `.fc-card__role-badge` (samt modifierare
+för `--guardian`, `--child`, `--teacher`, `--admin`, `--system`). Den
+används av domänkort för att rendera färgade rollmarkörer med ett
+konsekvent utseende.
