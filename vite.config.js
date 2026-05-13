@@ -29,6 +29,7 @@ export default defineConfig({
       "@minilogg/teacher-card": pkg("teacher-card"),
       "@minilogg/message-card": pkg("message-card"),
       "@minilogg/meal-status-selector": pkg("meal-status-selector"),
+      "@minilogg/department-overview-card": pkg("department-overview-card"),
     },
   },
   test: {

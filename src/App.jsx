@@ -6,6 +6,7 @@ import {
   CardMedia,
 } from "@minilogg/cards";
 import { ChildCard } from "@minilogg/child-card";
+import { DepartmentOverviewCard } from "@minilogg/department-overview-card";
 import { TeacherCard } from "@minilogg/teacher-card";
 import { MessageCard, NoticeCard } from "@minilogg/message-card";
 import { Dropdown } from "@minilogg/dropdowns";
@@ -162,6 +163,7 @@ function Showcase() {
               { href: "#meal-status", label: "meal-status-selector", variant: "success" },
               { href: "#badges", label: "badges", variant: "success" },
               { href: "#cards", label: "cards", variant: "info" },
+              { href: "#department-overview", label: "department-overview-card", variant: "success" },
               { href: "#child-card", label: "child-card", variant: "success" },
               { href: "#teacher-card", label: "teacher-card", variant: "success" },
               { href: "#message-card", label: "message-card", variant: "success" },
@@ -321,6 +323,20 @@ function Showcase() {
               </div>
             </Card>
           </div>
+        </section>
+
+        <section id="department-overview" className="section">
+          <h2 className="section__title">DepartmentOverviewCard</h2>
+          <p className="section__hint">
+            Hero/header-kort som presenterar en avdelning med namn, antal
+            inskrivna barn, antal pedagoger och aktuellt tema.
+          </p>
+          <DepartmentOverviewCard
+            name="Snäckan"
+            childrenCount={16}
+            teachersCount={3}
+            theme="Färger och former"
+          />
         </section>
 
         <section id="child-card" className="section">
