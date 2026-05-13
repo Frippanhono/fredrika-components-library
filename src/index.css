@@ -54,8 +54,8 @@
 
   /* Typography */
   --fc-font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, sans-serif;
+    "Fredoka", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   --fc-font-size-xs: 0.75rem;
   --fc-font-size-sm: 0.85rem;
   --fc-font-size-md: 1rem;
@@ -118,6 +118,7 @@ body {
   font-family: var(--fc-font-family);
   background: var(--fc-color-bg);
   color: var(--fc-color-text);
+  letter-spacing: 0.02em;
 }
 
 #root {

@@ -12,7 +12,7 @@
   overflow: hidden;
   flex: 0 0 48px;
   color: var(--fc-color-text);
-  font-weight: var(--fc-font-weight-semibold);
+  font-weight: var(--fc-font-weight-medium, 500);
 }
 
 .fc-card__child-avatar-img {
@@ -73,8 +73,8 @@
 
 .fc-card__child-name {
   font-size: 1.5rem;
-  font-weight: var(--fc-font-weight-bold, 700);
-  letter-spacing: -0.01em;
+  font-weight: var(--fc-font-weight-medium, 500);
+  letter-spacing: 0.01em;
   color: var(--fc-color-text);
   line-height: 1.15;
 }
@@ -87,7 +87,7 @@
   padding: 4px 10px;
   border-radius: 999px;
   font-size: 0.78rem;
-  font-weight: var(--fc-font-weight-semibold);
+  font-weight: var(--fc-font-weight-medium, 500);
   background: var(--fc-color-surface-alt);
   color: var(--fc-color-text);
   border: 1px solid var(--fc-color-border);

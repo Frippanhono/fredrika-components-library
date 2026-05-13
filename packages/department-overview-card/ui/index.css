@@ -1,12 +1,13 @@
 .fc-card--department-overview {
-  background: var(--fc-color-surface-alt);
-  border-color: var(--fc-color-border);
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .fc-card--department-overview:hover {
   transform: none;
-  box-shadow: var(--fc-shadow-sm);
-  border-color: var(--fc-color-border);
+  box-shadow: none;
+  border-color: transparent;
 }
 
 .fc-card__department {
@@ -23,7 +24,7 @@
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: var(--fc-font-weight-semibold);
   color: var(--fc-color-text);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   line-height: 1.15;
 }
 

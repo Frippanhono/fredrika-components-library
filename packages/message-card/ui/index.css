@@ -59,13 +59,13 @@
 }
 
 .fc-card__msg-sender {
-  font-weight: var(--fc-font-weight-semibold);
+  font-weight: var(--fc-font-weight-medium, 500);
   color: var(--fc-color-text);
   font-size: 0.95rem;
 }
 
 .fc-card--message-unread .fc-card__msg-sender {
-  font-weight: var(--fc-font-weight-bold, 700);
+  font-weight: var(--fc-font-weight-semibold, 600);
 }
 
 .fc-card__msg-unread-dot {

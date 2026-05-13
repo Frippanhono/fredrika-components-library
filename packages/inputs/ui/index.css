@@ -10,7 +10,7 @@
   font-size: 0.85rem;
   font-weight: var(--fc-font-weight-medium);
   color: var(--fc-color-text-muted);
-  letter-spacing: -0.005em;
+  letter-spacing: 0.02em;
 }
 
 .fc-field__input {

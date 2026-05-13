@@ -20,7 +20,7 @@
   overflow: hidden;
   flex: 0 0 56px;
   color: var(--fc-color-text);
-  font-weight: var(--fc-font-weight-semibold);
+  font-weight: var(--fc-font-weight-medium, 500);
 }
 
 .fc-card__teacher-avatar-img {
@@ -50,7 +50,7 @@
 
 .fc-card__teacher-title {
   font-size: 0.85rem;
-  font-weight: var(--fc-font-weight-semibold);
+  font-weight: var(--fc-font-weight-medium, 500);
   color: var(--fc-color-text-soft);
   letter-spacing: 0.01em;
   margin: 0 0 2px;
@@ -79,8 +79,8 @@
 
 .fc-card__teacher-name {
   font-size: 1.4rem;
-  font-weight: var(--fc-font-weight-bold, 700);
-  letter-spacing: -0.01em;
+  font-weight: var(--fc-font-weight-medium, 500);
+  letter-spacing: 0.01em;
   color: var(--fc-color-text);
   line-height: 1.15;
   white-space: normal;
