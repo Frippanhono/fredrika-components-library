@@ -1,40 +1,47 @@
 # @minilogg/navbar
 
-Responsiv toppnavigering med varumärke, länkar och åtgärder.
+Ikon-baserad navigering som lägger sig som en "tab bar" längst ner på mobila
+skärmar och ersätter den klassiska toppnavigeringen på större skärmar.
 
 ## Användning
 
 ```jsx
 import { Navbar } from "@minilogg/navbar";
-import { Button } from "@minilogg/buttons";
 
 <Navbar
   brand="MiniLogg"
-  activeHref="/"
+  activeHref="/clara"
   links={[
-    { label: "Hem", href: "/" },
-    { label: "Komponenter", href: "/components" },
-    { label: "Om", href: "/about" },
+    { label: "Anmäla frånvaro", href: "/absence", icon: <PhoneIcon /> },
+    { label: "Checka in/ut", href: "/checkin", icon: <CheckIcon /> },
+    { label: "Clara", href: "/clara", avatar: "/clara.jpg", featured: true },
+    { label: "Kontaktlista", href: "/contacts", icon: <ContactsIcon /> },
+    { label: "Mer", href: "/more", icon: <MoreIcon /> },
   ]}
-  actions={<Button size="sm">Logga in</Button>}
   onNavigate={(link) => router.push(link.href)}
 />
 ```
 
 ## Props
 
-| Prop         | Typ                                       | Default | Beskrivning                                                                       |
-| ------------ | ----------------------------------------- | ------- | --------------------------------------------------------------------------------- |
-| `brand`      | `ReactNode`                               | —       | Logotyp eller varumärkesnamn till vänster.                                        |
-| `links`      | `Array<{ label, href? }>`                 | `[]`    | Navigeringslänkar.                                                                |
-| `actions`    | `ReactNode`                               | —       | Åtgärder till höger (t.ex. inloggningsknapp).                                     |
-| `activeHref` | `string`                                  | —       | `href` som ska markeras som aktiv.                                                |
-| `onNavigate` | `(link) => void`                          | —       | Om angiven används den istället för default-länknavigering (förhindrar omladdning). |
+| Prop         | Typ                                                   | Default              | Beskrivning                                                                       |
+| ------------ | ----------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------- |
+| `brand`      | `ReactNode`                                           | —                    | Logotyp eller varumärkesnamn (visas endast i desktopvy).                          |
+| `links`      | `Array<{ label, href?, icon?, avatar?, featured? }>`  | `[]`                 | Navigeringslänkar. `icon`/`avatar` visas ovanför `label`.                         |
+| `actions`    | `ReactNode`                                           | —                    | Åtgärder i desktopvy (döljs på mobil).                                            |
+| `activeHref` | `string`                                              | —                    | `href` som ska markeras som aktiv.                                                |
+| `onNavigate` | `(link) => void`                                      | —                    | Om angiven används den i stället för default-länknavigering (förhindrar omladdning). |
+| `ariaLabel`  | `string`                                              | `"Huvudnavigering"`  | Tillgänglig etikett för `<nav>`-landmarken.                                       |
 
 ## Beteende
 
-- På små skärmar kollapsas länkarna bakom en hamburgerknapp.
-- Vid klick på en länk stängs den mobila menyn automatiskt.
+- **Mobil (≤ 720px):** navbar:en är fast förankrad längst ner i vyn. `brand`
+  och `actions` döljs och länkarna fyller raden jämnt.
+- **Desktop (> 720px):** samma rad sitter sticky i toppen av sidan tillsammans
+  med `brand` och `actions`.
+- En länk med `featured: true` framhävs visuellt – tillsammans med `avatar`
+  visas en cirkulär bild som lyfter ur raden (lämpligt för t.ex. ett barns
+  profilbild).
 
 ## Feedback
 

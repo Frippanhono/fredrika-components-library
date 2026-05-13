@@ -170,9 +170,10 @@
   letter-spacing: 0.04em;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .app__main {
-    padding: 1.5rem 1rem 3rem;
+    /* extra bottom-padding så att innehållet inte hamnar bakom den fasta navbar:en */
+    padding: 1.5rem 1rem calc(8rem + env(safe-area-inset-bottom, 0px));
     gap: 2rem;
   }
   .section {
