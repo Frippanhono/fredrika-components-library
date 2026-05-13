@@ -1,11 +1,16 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
 import {
   Card,
   CardHeader,
   CardTitle,
+  CardSubtitle,
+  CardMedia,
+  CardMeta,
+  CardActions,
   CardBody,
   CardFooter,
+  StatCard,
 } from "@minilogg/cards";
 
 describe("Card primitives", () => {
@@ -39,5 +44,94 @@ describe("Card primitives", () => {
     expect(screen.getByText("T")).toHaveClass("fc-card__title", "t");
     expect(screen.getByText("B")).toHaveClass("fc-card__body", "b");
     expect(screen.getByText("F")).toHaveClass("fc-card__footer", "f");
+  });
+
+  it("applies variant and tone modifier classes", () => {
+    render(
+      <Card data-testid="c" variant="elevated" tone="info">
+        body
+      </Card>,
+    );
+    const el = screen.getByTestId("c");
+    expect(el).toHaveClass("fc-card", "fc-card--elevated", "fc-card--tone-info");
+  });
+
+  it("renders header sub-parts (media, subtitle, meta, actions)", () => {
+    render(
+      <Card>
+        <CardHeader>
+          <CardMedia data-testid="media">M</CardMedia>
+          <div>
+            <CardTitle>Alma</CardTitle>
+            <CardSubtitle>5 år</CardSubtitle>
+          </div>
+          <CardMeta data-testid="meta">09:42</CardMeta>
+          <CardActions data-testid="actions">
+            <button>X</button>
+          </CardActions>
+        </CardHeader>
+      </Card>,
+    );
+    expect(screen.getByTestId("media")).toHaveClass("fc-card__media");
+    expect(screen.getByText("5 år")).toHaveClass("fc-card__subtitle");
+    expect(screen.getByTestId("meta")).toHaveClass("fc-card__meta");
+    expect(screen.getByTestId("actions")).toHaveClass("fc-card__actions");
+  });
+
+  it("becomes interactive when onClick is provided (role, keyboard)", () => {
+    const onClick = vi.fn();
+    render(
+      <Card onClick={onClick} data-testid="c">
+        click me
+      </Card>,
+    );
+    const el = screen.getByTestId("c");
+    expect(el).toHaveClass("fc-card--interactive");
+    expect(el).toHaveAttribute("role", "button");
+    expect(el).toHaveAttribute("tabindex", "0");
+
+    fireEvent.click(el);
+    fireEvent.keyDown(el, { key: "Enter" });
+    fireEvent.keyDown(el, { key: " " });
+    expect(onClick).toHaveBeenCalledTimes(3);
+  });
+
+  it("marks selected cards", () => {
+    render(
+      <Card selected data-testid="c">
+        x
+      </Card>,
+    );
+    expect(screen.getByTestId("c")).toHaveClass("fc-card--selected");
+  });
+
+  it("allows changing the title element via `as`", () => {
+    render(<CardTitle as="h2">Heading</CardTitle>);
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Heading" }),
+    ).toHaveClass("fc-card__title");
+  });
+});
+
+describe("StatCard", () => {
+  it("renders label, value and delta with trend modifier", () => {
+    render(
+      <StatCard
+        data-testid="stat"
+        label="Aktiva barn"
+        value={128}
+        delta="+4"
+        trend="up"
+        tone="success"
+      />,
+    );
+    const el = screen.getByTestId("stat");
+    expect(el).toHaveClass("fc-card", "fc-card--stat", "fc-card--tone-success");
+    expect(screen.getByText("Aktiva barn")).toHaveClass("fc-card__stat-label");
+    expect(screen.getByText("128")).toHaveClass("fc-card__stat-value");
+    expect(screen.getByText("+4")).toHaveClass(
+      "fc-card__stat-delta",
+      "fc-card__stat-delta--up",
+    );
   });
 });
