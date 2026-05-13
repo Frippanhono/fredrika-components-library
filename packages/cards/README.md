@@ -5,7 +5,18 @@ Kortkomponenter för att gruppera relaterat innehåll.
 ## Användning
 
 ```jsx
-import { Card, CardHeader, CardTitle, CardBody, CardFooter } from "@minilogg/cards";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardSubtitle,
+  CardMedia,
+  CardMeta,
+  CardActions,
+  CardBody,
+  CardFooter,
+  StatCard,
+} from "@minilogg/cards";
 import { Button } from "@minilogg/buttons";
 
 <Card>
@@ -23,15 +34,90 @@ import { Button } from "@minilogg/buttons";
 
 ## Komponenter
 
-| Komponent    | Beskrivning                                              |
-| ------------ | -------------------------------------------------------- |
-| `Card`       | Yttre container med ram och bakgrund.                    |
-| `CardHeader` | Övre sektion, lämplig för rubrik och åtgärder.           |
-| `CardTitle`  | Semantisk `<h3>`-rubrik.                                 |
-| `CardBody`   | Huvudinnehåll.                                           |
-| `CardFooter` | Nedre sektion, ofta knappar eller metadata.              |
+| Komponent       | Beskrivning                                                   |
+| --------------- | ------------------------------------------------------------- |
+| `Card`          | Yttre container. Stödjer `variant`, `tone`, `interactive`, `selected`. |
+| `CardHeader`    | Övre sektion (rubrik, media, meta, åtgärder).                 |
+| `CardTitle`     | Semantisk rubrik (`<h3>` som default, byts med `as`).         |
+| `CardSubtitle`  | Sekundär etikett under rubriken.                              |
+| `CardMedia`     | Plats för avatar, ikon eller bild.                            |
+| `CardMeta`      | Diskret metadata, t.ex. tidsstämpel.                          |
+| `CardActions`   | Grupp av knappar/länkar.                                      |
+| `CardBody`      | Huvudinnehåll.                                                |
+| `CardFooter`    | Nedre sektion, ofta knappar eller metadata.                   |
+| `StatCard`      | Färdig nyckeltalsruta för dashboards.                         |
 
 Alla komponenter tar `children` och `className` och vidarebefordrar övriga props till det underliggande elementet.
+
+### Props på `Card`
+
+| Prop          | Typ                                                              | Default     | Beskrivning                                |
+| ------------- | ---------------------------------------------------------------- | ----------- | ------------------------------------------ |
+| `variant`     | `"default" \| "elevated" \| "outline" \| "ghost"`                | `"default"` | Visuell stil.                              |
+| `tone`        | `"neutral" \| "info" \| "success" \| "warning" \| "danger"`      | `"neutral"` | Accentfärg på vänsterkanten.               |
+| `interactive` | `boolean`                                                        | `false`     | Klickbart kort med fokus och tangentbord.  |
+| `selected`    | `boolean`                                                        | `false`     | Visuell markering för valt/aktivt kort.    |
+| `as`          | `keyof JSX.IntrinsicElements`                                    | `"div"`     | Underliggande element.                     |
+| `onClick`     | `(e) => void`                                                    | –           | Aktiverar tangentbordsstöd (Enter/Space).  |
+
+## Återanvändning
+
+### Barnkort
+
+```jsx
+<Card interactive onClick={() => openChild(child.id)}>
+  <CardHeader>
+    <CardMedia><Avatar name={child.name} /></CardMedia>
+    <div>
+      <CardTitle>{child.name}</CardTitle>
+      <CardSubtitle>{child.age} år · {child.group}</CardSubtitle>
+    </div>
+    <CardActions><Badge variant="success">Närvarande</Badge></CardActions>
+  </CardHeader>
+</Card>
+```
+
+### Aktivitet
+
+```jsx
+<Card variant="ghost" tone="info">
+  <CardHeader>
+    <CardMedia>📌</CardMedia>
+    <div>
+      <CardTitle as="h4">Lämnade på förskolan</CardTitle>
+      <CardSubtitle>Alma av Pappa</CardSubtitle>
+    </div>
+    <CardMeta>08:14</CardMeta>
+  </CardHeader>
+</Card>
+```
+
+### Meddelanden
+
+```jsx
+<Card
+  interactive
+  tone={message.unread ? "info" : "neutral"}
+  selected={message.id === activeId}
+  onClick={() => open(message.id)}
+>
+  <CardHeader>
+    <CardTitle>{message.from}</CardTitle>
+    <CardMeta>{message.time}</CardMeta>
+  </CardHeader>
+  <CardBody>{message.preview}</CardBody>
+</Card>
+```
+
+### Dashboard
+
+```jsx
+<div className="grid-cards">
+  <StatCard label="Aktiva barn" value={128} delta="+4" trend="up" tone="success" />
+  <StatCard label="Meddelanden" value={12} delta="3 olästa" tone="info" />
+  <StatCard label="Avvikelser" value={2} delta="−1" trend="down" tone="warning" />
+</div>
+```
 
 ## Feedback
 
