@@ -1,0 +1,50 @@
+.fc-card--stat .fc-card__stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-1, 4px);
+  padding: var(--fc-space-5);
+}
+
+.fc-card__stat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fc-space-2);
+}
+
+.fc-card__stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fc-color-text-soft);
+  font-weight: var(--fc-font-weight-semibold);
+}
+
+.fc-card__stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fc-color-text-soft);
+}
+
+.fc-card__stat-value {
+  font-size: 1.75rem;
+  font-weight: var(--fc-font-weight-semibold);
+  color: var(--fc-color-text);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.fc-card__stat-delta {
+  font-size: 0.85rem;
+  color: var(--fc-color-text-soft);
+}
+.fc-card__stat-delta--up {
+  color: var(--fc-color-success, #16a34a);
+}
+.fc-card__stat-delta--down {
+  color: var(--fc-color-danger, #dc2626);
+}
+.fc-card__stat-delta--flat {
+  color: var(--fc-color-text-soft);
+}

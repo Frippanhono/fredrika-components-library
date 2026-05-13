@@ -17,11 +17,14 @@ Detta startar Vite-demosajten (`src/`) där alla komponenter visas.
 | -------------------------------------------- | -------------------------------------------------------- |
 | [@minilogg/badges](packages/badges)          | Etiketter för status, kategori och räknare.              |
 | [@minilogg/buttons](packages/buttons)        | Knappar med varianter och storlekar.                     |
-| [@minilogg/cards](packages/cards)            | Kortlayout med header, body och footer.                  |
+| [@minilogg/cards](packages/cards)            | Kortprimitiver (Card, Header, Body, Footer, m.fl.).      |
+| [@minilogg/child-card](packages/child-card)  | Pedagogiskt kort för ett barn (namn, status, avatar).  |
 | [@minilogg/dropdowns](packages/dropdowns)    | Tillgängliga menyer som öppnas vid klick.                |
 | [@minilogg/inputs](packages/inputs)          | Textfält och textarea med etikett, hint och fel.         |
+| [@minilogg/message-card](packages/message-card) | Meddelande-/aviseringskort med roller och prioritet.  |
 | [@minilogg/modals](packages/modals)          | Dialogrutor renderade via portal.                        |
 | [@minilogg/navbar](packages/navbar)          | Responsiv toppnavigering.                                |
+| [@minilogg/stat-card](packages/stat-card)    | Kompakt nyckeltalskort för dashboards.                  |
 | [@minilogg/tabs](packages/tabs)              | Flikar för att växla mellan paneler.                     |
 | [@minilogg/toasts](packages/toasts)          | Toast-notifieringar via provider och `useToast`-hook.    |
 
